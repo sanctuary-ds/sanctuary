@@ -56,4 +56,8 @@ There are no dependencies; Node 20 or later is enough.
 
 ## Status
 
-`0.1.0`, the foundation. No licence has been chosen yet; that decision is open.
+`0.1.0`, the foundation.
+
+## Licence
+
+[MIT](LICENSE). The fonts used by the showcase are not part of Sanctuary and keep their own licences.

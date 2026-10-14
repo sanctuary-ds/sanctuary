@@ -74,6 +74,5 @@ Candidates: foot, WezTerm, tmux, Zellij, Neovim, Rofi, Dunst, Starship, btop, Fi
 
 | Decision | Options | Note |
 |----------|---------|------|
-| Licence | MIT, Apache-2.0, or a split (code and palette) | Needed before the organisation goes public |
 | Fonts | Keep the Google Fonts set or self-host | The showcase loads them from Google Fonts and falls back to system fonts offline |
 | Wide gamut | Add Display P3 pigments | The engine clamps to sRGB today |

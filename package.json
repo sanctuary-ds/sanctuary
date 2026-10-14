@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "description": "Sanctuary: a design system of stone, glass and light.",
+  "license": "MIT",
   "type": "module",
   "packageManager": "pnpm@12.8.1",
   "engines": {
