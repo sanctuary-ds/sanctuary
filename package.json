@@ -1,0 +1,21 @@
+{
+  "name": "@sanctuary/tokens",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Sanctuary: a design system of stone, glass and light.",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "node scripts/build.js",
+    "check": "node scripts/build.js --check",
+    "test": "node --test",
+    "showcase": "python3 -m http.server 4173 --directory ."
+  },
+  "exports": {
+    "./css": "./dist/css/sanctuary.css",
+    "./palette": "./dist/palette.json",
+    "./tokens/*": "./tokens/*"
+  }
+}
