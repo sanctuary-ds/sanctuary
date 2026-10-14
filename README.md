@@ -45,7 +45,7 @@ Any element can carry these attributes, so a card can sit in another flavor or a
 | `pnpm run check` | Fails if any generated file is stale |
 | `pnpm test` | Colour maths, WCAG AA contrast for every flavor, DTCG validity, cascade order, ports |
 
-There are no dependencies; Node 20 or later is enough.
+There are no dependencies. The tools run on Node 22 or later; development uses Node 24, which pnpm downloads for the project when it is missing (`devEngines.runtime` in `package.json`).
 
 ## Read next
 
