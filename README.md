@@ -6,7 +6,7 @@ A design system of stone, glass, lead and light: the chiaroscuro of a Gothic nav
 
 1. Open `showcase/index.html` in a browser (no server or build needed).
 2. Switch **flavor**, **accent** and **glazing** in the header, or press `F`, `A`, `G`. `W` toggles the window setting.
-3. To change the system, edit `src/`, then run `npm run build` and `npm test`.
+3. To change the system, edit `src/`, then run `pnpm run build` and `pnpm test`.
 
 Share a specific look with a query string: `showcase/index.html?flavor=lauds&accent=ruby&glazing=flashed&window=harmonic`.
 
@@ -41,9 +41,9 @@ Any element can carry these attributes, so a card can sit in another flavor or a
 
 | Command | Result |
 |---------|--------|
-| `npm run build` | Regenerates `tokens/`, `dist/`, `ports/` and `showcase/palette.js` |
-| `npm run check` | Fails if any generated file is stale |
-| `npm test` | Colour maths, WCAG AA contrast for every flavor, DTCG validity, cascade order, ports |
+| `pnpm run build` | Regenerates `tokens/`, `dist/`, `ports/` and `showcase/palette.js` |
+| `pnpm run check` | Fails if any generated file is stale |
+| `pnpm test` | Colour maths, WCAG AA contrast for every flavor, DTCG validity, cascade order, ports |
 
 There are no dependencies; Node 20 or later is enough.
 

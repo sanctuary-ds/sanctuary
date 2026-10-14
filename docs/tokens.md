@@ -5,7 +5,7 @@ Every token is a custom property prefixed `--san-`. The name is the DTCG token p
 ## Quick path
 
 ```css
-@import "sanctuary/dist/css/sanctuary.css";
+@import "@sanctuary-ds/tokens/css"; /* resolved by a bundler; or link dist/css/sanctuary.css directly */
 
 .button {
   background: var(--san-glaze-sheen), var(--san-glaze-bg);

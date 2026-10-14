@@ -1,6 +1,6 @@
 # Ecosystem
 
-This repository is the seed of a future GitHub organisation. It holds the one thing every other module depends on: the palette and tokens. This page proposes how the rest should be split. Nothing here exists yet except the first row.
+This repository is the seed of the [`sanctuary-ds`](https://github.com/sanctuary-ds) GitHub organisation; packages publish under the `@sanctuary-ds` npm scope. It holds the one thing every other module depends on: the palette and tokens. This page proposes how the rest should be split. Nothing here exists yet except the first row.
 
 ## Proposed repositories
 
@@ -49,7 +49,7 @@ These files are generated from templates and have not been loaded in each applic
 
 1. Add a template function to `src/emit/ports.js` that takes a flavor and a `hex(path)` resolver.
 2. Register it in `PORTS` with its file extension.
-3. Run `npm run build` and `npm test`.
+3. Run `pnpm run build` and `pnpm test`.
 
 Candidates: foot, WezTerm, tmux, Zellij, Neovim, Rofi, Dunst, Starship, btop, Firefox, VS Code.
 
@@ -75,6 +75,5 @@ Candidates: foot, WezTerm, tmux, Zellij, Neovim, Rofi, Dunst, Starship, btop, Fi
 | Decision | Options | Note |
 |----------|---------|------|
 | Licence | MIT, Apache-2.0, or a split (code and palette) | Needed before the organisation goes public |
-| Organisation and npm scope name | `sanctuary` may be taken | `package.json` uses `@sanctuary/tokens` as a placeholder |
 | Fonts | Keep the Google Fonts set or self-host | The showcase loads them from Google Fonts and falls back to system fonts offline |
 | Wide gamut | Add Display P3 pigments | The engine clamps to sRGB today |

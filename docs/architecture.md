@@ -13,7 +13,7 @@ src/color.js      ─┘        │         ─► tokens/sanctuary.resolver.jso
                             └─► scripts/build.js  ─► dist/palette.json, showcase/palette.js
 ```
 
-`npm run build` writes all of it. `npm run check` (also run by the test suite) fails when a generated file is stale.
+`pnpm run build` writes all of it. `pnpm run check` (also run by the test suite) fails when a generated file is stale.
 
 ## Token tiers
 
@@ -82,7 +82,7 @@ The stylesheet relies on `oklch()`, `color-mix()` and `:is()`, all widely availa
 
 ## Testing
 
-`npm test` covers the contracts that are easy to break silently:
+`pnpm test` covers the contracts that are easy to break silently:
 
 | Test | Guards |
 |------|--------|

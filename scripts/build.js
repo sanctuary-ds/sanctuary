@@ -68,7 +68,7 @@ for (const [file, content] of Object.entries(files)) {
 }
 
 if (stale.length > 0) {
-  console.error(`Stale generated files, run \`npm run build\`:\n${stale.map((file) => `  ${file}`).join('\n')}`);
+  console.error(`Stale generated files, run \`pnpm run build\`:\n${stale.map((file) => `  ${file}`).join('\n')}`);
   process.exit(1);
 }
 console.log(`${check ? 'Verified' : 'Wrote'} ${Object.keys(files).length} files.`);
