@@ -1,0 +1,23 @@
+{
+  "accent": {
+    "$type": "color",
+    "$root": {
+      "$value": "{glass.azure.$root}"
+    },
+    "lume": {
+      "$value": "{glass.azure.lume}"
+    },
+    "ink": {
+      "$value": "{glass.azure.ink}"
+    },
+    "pane": {
+      "$value": "{glass.azure.pane}"
+    },
+    "on": {
+      "$value": "{glass.azure.on}"
+    },
+    "on-pane": {
+      "$value": "{glass.azure.on-pane}"
+    }
+  }
+}

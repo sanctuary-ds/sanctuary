@@ -1,0 +1,152 @@
+{
+  "name": "Sanctuary",
+  "version": "2025-10-01",
+  "description": "Resolves Sanctuary tokens for one flavor and one accent.",
+  "sets": {
+    "foundation": {
+      "sources": [
+        {
+          "$ref": "foundation/space.tokens.json"
+        },
+        {
+          "$ref": "foundation/shape.tokens.json"
+        },
+        {
+          "$ref": "foundation/typography.tokens.json"
+        },
+        {
+          "$ref": "foundation/motion.tokens.json"
+        },
+        {
+          "$ref": "foundation/elevation.tokens.json"
+        }
+      ]
+    },
+    "pigment": {
+      "sources": [
+        {
+          "$ref": "pigment.tokens.json"
+        }
+      ]
+    },
+    "semantic": {
+      "sources": [
+        {
+          "$ref": "semantic.tokens.json"
+        }
+      ]
+    }
+  },
+  "modifiers": {
+    "flavor": {
+      "description": "The hour of the day.",
+      "contexts": {
+        "lauds": [
+          {
+            "$ref": "flavor/lauds.tokens.json"
+          }
+        ],
+        "vespers": [
+          {
+            "$ref": "flavor/vespers.tokens.json"
+          }
+        ],
+        "compline": [
+          {
+            "$ref": "flavor/compline.tokens.json"
+          }
+        ],
+        "matins": [
+          {
+            "$ref": "flavor/matins.tokens.json"
+          }
+        ]
+      },
+      "default": "compline"
+    },
+    "accent": {
+      "description": "The pigment that plays the accent. `flavor` keeps the default of the active flavor.",
+      "contexts": {
+        "flavor": [],
+        "ruby": [
+          {
+            "$ref": "accent/ruby.tokens.json"
+          }
+        ],
+        "ember": [
+          {
+            "$ref": "accent/ember.tokens.json"
+          }
+        ],
+        "amber": [
+          {
+            "$ref": "accent/amber.tokens.json"
+          }
+        ],
+        "gilt": [
+          {
+            "$ref": "accent/gilt.tokens.json"
+          }
+        ],
+        "verdure": [
+          {
+            "$ref": "accent/verdure.tokens.json"
+          }
+        ],
+        "viridian": [
+          {
+            "$ref": "accent/viridian.tokens.json"
+          }
+        ],
+        "azure": [
+          {
+            "$ref": "accent/azure.tokens.json"
+          }
+        ],
+        "cobalt": [
+          {
+            "$ref": "accent/cobalt.tokens.json"
+          }
+        ],
+        "indigo": [
+          {
+            "$ref": "accent/indigo.tokens.json"
+          }
+        ],
+        "amethyst": [
+          {
+            "$ref": "accent/amethyst.tokens.json"
+          }
+        ],
+        "murrey": [
+          {
+            "$ref": "accent/murrey.tokens.json"
+          }
+        ],
+        "rose": [
+          {
+            "$ref": "accent/rose.tokens.json"
+          }
+        ]
+      },
+      "default": "flavor"
+    }
+  },
+  "resolutionOrder": [
+    {
+      "$ref": "#/sets/foundation"
+    },
+    {
+      "$ref": "#/sets/pigment"
+    },
+    {
+      "$ref": "#/modifiers/flavor"
+    },
+    {
+      "$ref": "#/sets/semantic"
+    },
+    {
+      "$ref": "#/modifiers/accent"
+    }
+  ]
+}

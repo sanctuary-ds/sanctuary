@@ -1,0 +1,216 @@
+{
+  "danger": {
+    "$type": "color",
+    "$root": {
+      "$value": "{glass.ruby.$root}"
+    },
+    "lume": {
+      "$value": "{glass.ruby.lume}"
+    },
+    "ink": {
+      "$value": "{glass.ruby.ink}"
+    },
+    "pane": {
+      "$value": "{glass.ruby.pane}"
+    },
+    "on": {
+      "$value": "{glass.ruby.on}"
+    },
+    "on-pane": {
+      "$value": "{glass.ruby.on-pane}"
+    }
+  },
+  "warning": {
+    "$type": "color",
+    "$root": {
+      "$value": "{glass.amber.$root}"
+    },
+    "lume": {
+      "$value": "{glass.amber.lume}"
+    },
+    "ink": {
+      "$value": "{glass.amber.ink}"
+    },
+    "pane": {
+      "$value": "{glass.amber.pane}"
+    },
+    "on": {
+      "$value": "{glass.amber.on}"
+    },
+    "on-pane": {
+      "$value": "{glass.amber.on-pane}"
+    }
+  },
+  "success": {
+    "$type": "color",
+    "$root": {
+      "$value": "{glass.verdure.$root}"
+    },
+    "lume": {
+      "$value": "{glass.verdure.lume}"
+    },
+    "ink": {
+      "$value": "{glass.verdure.ink}"
+    },
+    "pane": {
+      "$value": "{glass.verdure.pane}"
+    },
+    "on": {
+      "$value": "{glass.verdure.on}"
+    },
+    "on-pane": {
+      "$value": "{glass.verdure.on-pane}"
+    }
+  },
+  "info": {
+    "$type": "color",
+    "$root": {
+      "$value": "{glass.azure.$root}"
+    },
+    "lume": {
+      "$value": "{glass.azure.lume}"
+    },
+    "ink": {
+      "$value": "{glass.azure.ink}"
+    },
+    "pane": {
+      "$value": "{glass.azure.pane}"
+    },
+    "on": {
+      "$value": "{glass.azure.on}"
+    },
+    "on-pane": {
+      "$value": "{glass.azure.on-pane}"
+    }
+  },
+  "syntax": {
+    "$type": "color",
+    "keyword": {
+      "$value": "{glass.amethyst.$root}"
+    },
+    "string": {
+      "$value": "{glass.verdure.$root}"
+    },
+    "number": {
+      "$value": "{glass.ember.$root}"
+    },
+    "constant": {
+      "$value": "{glass.amber.$root}"
+    },
+    "function": {
+      "$value": "{glass.azure.$root}"
+    },
+    "type": {
+      "$value": "{glass.gilt.$root}"
+    },
+    "property": {
+      "$value": "{glass.cobalt.$root}"
+    },
+    "tag": {
+      "$value": "{glass.ruby.$root}"
+    },
+    "operator": {
+      "$value": "{glass.viridian.$root}"
+    },
+    "regex": {
+      "$value": "{glass.rose.$root}"
+    },
+    "variable": {
+      "$value": "{text.$root}"
+    },
+    "punctuation": {
+      "$value": "{text.muted}"
+    },
+    "comment": {
+      "$value": "{text.subtle}"
+    }
+  },
+  "window": {
+    "$type": "gradient",
+    "rosace": {
+      "$description": "Ruby against cobalt, the rose window.",
+      "$value": [
+        {
+          "color": "{pigment.ruby.600}",
+          "position": 0
+        },
+        {
+          "color": "{pigment.murrey.500}",
+          "position": 0.5
+        },
+        {
+          "color": "{pigment.cobalt.400}",
+          "position": 1
+        }
+      ]
+    },
+    "jesse": {
+      "$description": "Vine, gold and blood: the Jesse tree.",
+      "$value": [
+        {
+          "color": "{pigment.verdure.600}",
+          "position": 0
+        },
+        {
+          "color": "{pigment.gilt.500}",
+          "position": 0.5
+        },
+        {
+          "color": "{pigment.ruby.400}",
+          "position": 1
+        }
+      ]
+    },
+    "lancet": {
+      "$description": "A tall cool window, all blues.",
+      "$value": [
+        {
+          "color": "{pigment.viridian.600}",
+          "position": 0
+        },
+        {
+          "color": "{pigment.azure.500}",
+          "position": 0.5
+        },
+        {
+          "color": "{pigment.indigo.400}",
+          "position": 1
+        }
+      ]
+    },
+    "aureole": {
+      "$description": "Halo light, gold falling to coal.",
+      "$value": [
+        {
+          "color": "{pigment.gilt.600}",
+          "position": 0
+        },
+        {
+          "color": "{pigment.amber.500}",
+          "position": 0.5
+        },
+        {
+          "color": "{pigment.ember.400}",
+          "position": 1
+        }
+      ]
+    },
+    "vesperal": {
+      "$description": "The west window at sunset.",
+      "$value": [
+        {
+          "color": "{pigment.indigo.600}",
+          "position": 0
+        },
+        {
+          "color": "{pigment.amethyst.500}",
+          "position": 0.5
+        },
+        {
+          "color": "{pigment.rose.400}",
+          "position": 1
+        }
+      ]
+    }
+  }
+}

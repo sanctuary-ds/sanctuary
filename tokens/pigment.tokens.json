@@ -1,0 +1,1493 @@
+{
+  "pigment": {
+    "$type": "color",
+    "ruby": {
+      "50": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.972,
+            0.0129,
+            24
+          ],
+          "hex": "#fef3f2"
+        }
+      },
+      "100": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.94,
+            0.0283,
+            24
+          ],
+          "hex": "#fee4e2"
+        }
+      },
+      "200": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.885,
+            0.057,
+            24
+          ],
+          "hex": "#fdcbc7"
+        }
+      },
+      "300": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.805,
+            0.1043,
+            24
+          ],
+          "hex": "#fca59f"
+        }
+      },
+      "400": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.715,
+            0.1677,
+            24
+          ],
+          "hex": "#fa726e"
+        }
+      },
+      "500": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.625,
+            0.215,
+            24
+          ],
+          "hex": "#ed3a42"
+        }
+      },
+      "600": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.52,
+            0.1982,
+            24
+          ],
+          "hex": "#c11929"
+        }
+      },
+      "700": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.43,
+            0.1642,
+            24
+          ],
+          "hex": "#95101d"
+        }
+      },
+      "800": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.34,
+            0.1304,
+            24
+          ],
+          "hex": "#6c0812"
+        }
+      },
+      "900": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.265,
+            0.1026,
+            24
+          ],
+          "hex": "#4c0309"
+        }
+      },
+      "950": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.195,
+            0.0775,
+            24
+          ],
+          "hex": "#300003"
+        }
+      },
+      "$description": "Copper ruby, the red of the great rose windows."
+    },
+    "ember": {
+      "50": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.972,
+            0.0142,
+            47
+          ],
+          "hex": "#fff3ee"
+        }
+      },
+      "100": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.94,
+            0.0311,
+            47
+          ],
+          "hex": "#fee5da"
+        }
+      },
+      "200": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.885,
+            0.0622,
+            47
+          ],
+          "hex": "#fdcdb7"
+        }
+      },
+      "300": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.805,
+            0.1131,
+            47
+          ],
+          "hex": "#fca87f"
+        }
+      },
+      "400": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.715,
+            0.1803,
+            47
+          ],
+          "hex": "#fa782a"
+        }
+      },
+      "500": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.625,
+            0.1629,
+            47
+          ],
+          "hex": "#d36219"
+        }
+      },
+      "600": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.52,
+            0.1358,
+            47
+          ],
+          "hex": "#a54b11"
+        }
+      },
+      "700": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.43,
+            0.1126,
+            47
+          ],
+          "hex": "#7f380a"
+        }
+      },
+      "800": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.34,
+            0.0897,
+            47
+          ],
+          "hex": "#5c2604"
+        }
+      },
+      "900": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.265,
+            0.0711,
+            47
+          ],
+          "hex": "#401801"
+        }
+      },
+      "950": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.195,
+            0.0549,
+            47
+          ],
+          "hex": "#280b00"
+        }
+      },
+      "$description": "Red-orange, a coal seen through thick glass."
+    },
+    "amber": {
+      "50": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.972,
+            0.0191,
+            70
+          ],
+          "hex": "#fef4e8"
+        }
+      },
+      "100": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.94,
+            0.0416,
+            70
+          ],
+          "hex": "#fee7ce"
+        }
+      },
+      "200": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.885,
+            0.0826,
+            70
+          ],
+          "hex": "#fdd09e"
+        }
+      },
+      "300": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.805,
+            0.1326,
+            70
+          ],
+          "hex": "#f6af57"
+        }
+      },
+      "400": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.715,
+            0.1458,
+            70
+          ],
+          "hex": "#dc9021"
+        }
+      },
+      "500": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.625,
+            0.1276,
+            70
+          ],
+          "hex": "#b87819"
+        }
+      },
+      "600": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.52,
+            0.1077,
+            68.05
+          ],
+          "hex": "#915b11"
+        }
+      },
+      "700": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.43,
+            0.0904,
+            66.37
+          ],
+          "hex": "#70440a"
+        }
+      },
+      "800": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.34,
+            0.0729,
+            64.7
+          ],
+          "hex": "#512f04"
+        }
+      },
+      "900": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.265,
+            0.0585,
+            63.3
+          ],
+          "hex": "#391e01"
+        }
+      },
+      "950": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.195,
+            0.0456,
+            62
+          ],
+          "hex": "#230f00"
+        }
+      },
+      "$description": "Deep silver stain, fired towards orange."
+    },
+    "gilt": {
+      "50": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.972,
+            0.0256,
+            93
+          ],
+          "hex": "#fcf6e3"
+        }
+      },
+      "100": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.94,
+            0.048,
+            93
+          ],
+          "hex": "#f6ebc8"
+        }
+      },
+      "200": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.885,
+            0.0832,
+            93
+          ],
+          "hex": "#ecd89a"
+        }
+      },
+      "300": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.805,
+            0.1248,
+            93
+          ],
+          "hex": "#dbbd58"
+        }
+      },
+      "400": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.715,
+            0.1378,
+            93
+          ],
+          "hex": "#c1a021"
+        }
+      },
+      "500": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.625,
+            0.1206,
+            93
+          ],
+          "hex": "#a1851a"
+        }
+      },
+      "600": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.52,
+            0.1003,
+            89.09
+          ],
+          "hex": "#806511"
+        }
+      },
+      "700": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.43,
+            0.0834,
+            85.74
+          ],
+          "hex": "#644c0a"
+        }
+      },
+      "800": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.34,
+            0.0668,
+            82.4
+          ],
+          "hex": "#493404"
+        }
+      },
+      "900": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.265,
+            0.0533,
+            79.6
+          ],
+          "hex": "#332201"
+        }
+      },
+      "950": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.195,
+            0.0414,
+            77
+          ],
+          "hex": "#1f1200"
+        }
+      },
+      "$description": "Pale silver stain, the yellow of halos."
+    },
+    "verdure": {
+      "50": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.972,
+            0.0272,
+            142
+          ],
+          "hex": "#ecfbea"
+        }
+      },
+      "100": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.94,
+            0.051,
+            142
+          ],
+          "hex": "#d9f4d5"
+        }
+      },
+      "200": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.885,
+            0.0884,
+            142
+          ],
+          "hex": "#b8e9b3"
+        }
+      },
+      "300": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.805,
+            0.1326,
+            142
+          ],
+          "hex": "#8cd584"
+        }
+      },
+      "400": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.715,
+            0.1615,
+            142
+          ],
+          "hex": "#61bc59"
+        }
+      },
+      "500": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.625,
+            0.17,
+            142
+          ],
+          "hex": "#3ea036"
+        }
+      },
+      "600": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.52,
+            0.1651,
+            142
+          ],
+          "hex": "#1b7f12"
+        }
+      },
+      "700": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.43,
+            0.1369,
+            142
+          ],
+          "hex": "#12610b"
+        }
+      },
+      "800": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.34,
+            0.109,
+            142
+          ],
+          "hex": "#094505"
+        }
+      },
+      "900": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.265,
+            0.0862,
+            142
+          ],
+          "hex": "#032f02"
+        }
+      },
+      "950": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.195,
+            0.0662,
+            142
+          ],
+          "hex": "#001c00"
+        }
+      },
+      "$description": "Leaf green of foliage borders."
+    },
+    "viridian": {
+      "50": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.972,
+            0.0208,
+            172
+          ],
+          "hex": "#e9fbf4"
+        }
+      },
+      "100": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.94,
+            0.039,
+            172
+          ],
+          "hex": "#d2f4e8"
+        }
+      },
+      "200": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.885,
+            0.0676,
+            172
+          ],
+          "hex": "#ace8d4"
+        }
+      },
+      "300": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.805,
+            0.1014,
+            172
+          ],
+          "hex": "#74d5b8"
+        }
+      },
+      "400": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.715,
+            0.1235,
+            172
+          ],
+          "hex": "#37bc9a"
+        }
+      },
+      "500": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.625,
+            0.1141,
+            172
+          ],
+          "hex": "#1f9e80"
+        }
+      },
+      "600": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.52,
+            0.0951,
+            172
+          ],
+          "hex": "#157a63"
+        }
+      },
+      "700": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.43,
+            0.0788,
+            172
+          ],
+          "hex": "#0d5e4b"
+        }
+      },
+      "800": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.34,
+            0.0626,
+            172
+          ],
+          "hex": "#064234"
+        }
+      },
+      "900": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.265,
+            0.0494,
+            172
+          ],
+          "hex": "#022d22"
+        }
+      },
+      "950": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.195,
+            0.0376,
+            172
+          ],
+          "hex": "#001a13"
+        }
+      },
+      "$description": "Blue-green, cool and mineral."
+    },
+    "azure": {
+      "50": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.972,
+            0.0161,
+            228
+          ],
+          "hex": "#ebf8fe"
+        }
+      },
+      "100": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.94,
+            0.0348,
+            228
+          ],
+          "hex": "#d4f0fe"
+        }
+      },
+      "200": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.885,
+            0.068,
+            228
+          ],
+          "hex": "#aae3fd"
+        }
+      },
+      "300": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.805,
+            0.1092,
+            228
+          ],
+          "hex": "#6bcdf7"
+        }
+      },
+      "400": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.715,
+            0.1312,
+            228
+          ],
+          "hex": "#26b2e3"
+        }
+      },
+      "500": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.625,
+            0.1148,
+            228
+          ],
+          "hex": "#1e94be"
+        }
+      },
+      "600": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.52,
+            0.0956,
+            228
+          ],
+          "hex": "#157394"
+        }
+      },
+      "700": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.43,
+            0.0793,
+            228
+          ],
+          "hex": "#0d5872"
+        }
+      },
+      "800": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.34,
+            0.063,
+            228
+          ],
+          "hex": "#063e51"
+        }
+      },
+      "900": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.265,
+            0.0498,
+            228
+          ],
+          "hex": "#022a38"
+        }
+      },
+      "950": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.195,
+            0.0379,
+            228
+          ],
+          "hex": "#001822"
+        }
+      },
+      "$description": "Sky blue of clerestory grounds."
+    },
+    "cobalt": {
+      "50": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.972,
+            0.0125,
+            259
+          ],
+          "hex": "#f1f6fe"
+        }
+      },
+      "100": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.94,
+            0.0271,
+            259
+          ],
+          "hex": "#e1ecfe"
+        }
+      },
+      "200": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.885,
+            0.053,
+            259
+          ],
+          "hex": "#c5dbfd"
+        }
+      },
+      "300": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.805,
+            0.0926,
+            259
+          ],
+          "hex": "#9bc1fb"
+        }
+      },
+      "400": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.715,
+            0.1402,
+            259
+          ],
+          "hex": "#6ca3fa"
+        }
+      },
+      "500": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.625,
+            0.1909,
+            259
+          ],
+          "hex": "#3683f8"
+        }
+      },
+      "600": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.52,
+            0.1903,
+            259
+          ],
+          "hex": "#1062d3"
+        }
+      },
+      "700": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.43,
+            0.1579,
+            259
+          ],
+          "hex": "#094aa4"
+        }
+      },
+      "800": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.34,
+            0.1259,
+            259
+          ],
+          "hex": "#043377"
+        }
+      },
+      "900": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.265,
+            0.0999,
+            259
+          ],
+          "hex": "#012254"
+        }
+      },
+      "950": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.195,
+            0.0774,
+            259
+          ],
+          "hex": "#001237"
+        }
+      },
+      "$description": "Cobalt blue, the signature of Gothic glazing."
+    },
+    "indigo": {
+      "50": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.972,
+            0.0127,
+            281
+          ],
+          "hex": "#f4f5fe"
+        }
+      },
+      "100": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.94,
+            0.0275,
+            281
+          ],
+          "hex": "#e7eafe"
+        }
+      },
+      "200": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.885,
+            0.0538,
+            281
+          ],
+          "hex": "#d2d6fd"
+        }
+      },
+      "300": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.805,
+            0.0942,
+            281
+          ],
+          "hex": "#b4b9fb"
+        }
+      },
+      "400": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.715,
+            0.1428,
+            281
+          ],
+          "hex": "#9497fa"
+        }
+      },
+      "500": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.625,
+            0.1948,
+            281
+          ],
+          "hex": "#7772f8"
+        }
+      },
+      "600": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.52,
+            0.196,
+            281
+          ],
+          "hex": "#5b50d4"
+        }
+      },
+      "700": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.43,
+            0.172,
+            281
+          ],
+          "hex": "#4539a9"
+        }
+      },
+      "800": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.34,
+            0.14,
+            281
+          ],
+          "hex": "#30267d"
+        }
+      },
+      "900": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.265,
+            0.11,
+            281
+          ],
+          "hex": "#1f1858"
+        }
+      },
+      "950": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.195,
+            0.084,
+            281
+          ],
+          "hex": "#110b39"
+        }
+      },
+      "$description": "Blue-violet, glass at the last light."
+    },
+    "amethyst": {
+      "50": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.972,
+            0.0157,
+            306
+          ],
+          "hex": "#f8f3fe"
+        }
+      },
+      "100": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.94,
+            0.0341,
+            306
+          ],
+          "hex": "#f1e6fe"
+        }
+      },
+      "200": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.885,
+            0.0668,
+            306
+          ],
+          "hex": "#e4cefd"
+        }
+      },
+      "300": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.805,
+            0.1172,
+            306
+          ],
+          "hex": "#d2abfb"
+        }
+      },
+      "400": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.715,
+            0.178,
+            306
+          ],
+          "hex": "#bf81fa"
+        }
+      },
+      "500": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.625,
+            0.2,
+            306
+          ],
+          "hex": "#a65ee5"
+        }
+      },
+      "600": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.52,
+            0.196,
+            306
+          ],
+          "hex": "#863ec0"
+        }
+      },
+      "700": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.43,
+            0.172,
+            306
+          ],
+          "hex": "#682a98"
+        }
+      },
+      "800": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.34,
+            0.14,
+            306
+          ],
+          "hex": "#4a1a6f"
+        }
+      },
+      "900": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.265,
+            0.11,
+            306
+          ],
+          "hex": "#330f4e"
+        }
+      },
+      "950": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.195,
+            0.084,
+            306
+          ],
+          "hex": "#1f0532"
+        }
+      },
+      "$description": "Manganese purple."
+    },
+    "murrey": {
+      "50": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.972,
+            0.0169,
+            342
+          ],
+          "hex": "#fef2f9"
+        }
+      },
+      "100": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.94,
+            0.0372,
+            342
+          ],
+          "hex": "#fee2f2"
+        }
+      },
+      "200": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.885,
+            0.0749,
+            342
+          ],
+          "hex": "#fdc6e7"
+        }
+      },
+      "300": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.805,
+            0.138,
+            342
+          ],
+          "hex": "#fc9ad8"
+        }
+      },
+      "400": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.715,
+            0.1805,
+            342
+          ],
+          "hex": "#ec6fc2"
+        }
+      },
+      "500": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.625,
+            0.19,
+            342
+          ],
+          "hex": "#d04ea7"
+        }
+      },
+      "600": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.52,
+            0.1862,
+            342
+          ],
+          "hex": "#ab2c86"
+        }
+      },
+      "700": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.43,
+            0.1634,
+            342
+          ],
+          "hex": "#861a68"
+        }
+      },
+      "800": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.34,
+            0.133,
+            342
+          ],
+          "hex": "#610d4b"
+        }
+      },
+      "900": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.265,
+            0.1045,
+            342
+          ],
+          "hex": "#440633"
+        }
+      },
+      "950": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.195,
+            0.0798,
+            342
+          ],
+          "hex": "#2a011f"
+        }
+      },
+      "$description": "Murrey, the mulberry red-purple of glaziers."
+    },
+    "rose": {
+      "50": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.972,
+            0.0137,
+            3
+          ],
+          "hex": "#fff2f5"
+        }
+      },
+      "100": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.94,
+            0.03,
+            3
+          ],
+          "hex": "#fee3e9"
+        }
+      },
+      "200": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.885,
+            0.0605,
+            3
+          ],
+          "hex": "#fdc9d5"
+        }
+      },
+      "300": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.805,
+            0.1113,
+            3
+          ],
+          "hex": "#fca1b8"
+        }
+      },
+      "400": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.715,
+            0.152,
+            3
+          ],
+          "hex": "#ef769a"
+        }
+      },
+      "500": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.625,
+            0.16,
+            3
+          ],
+          "hex": "#d2577e"
+        }
+      },
+      "600": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.52,
+            0.1568,
+            3
+          ],
+          "hex": "#ad3760"
+        }
+      },
+      "700": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.43,
+            0.1376,
+            3
+          ],
+          "hex": "#882448"
+        }
+      },
+      "800": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.34,
+            0.112,
+            3
+          ],
+          "hex": "#631632"
+        }
+      },
+      "900": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.265,
+            0.088,
+            3
+          ],
+          "hex": "#450c21"
+        }
+      },
+      "950": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.195,
+            0.0672,
+            3
+          ],
+          "hex": "#2b0412"
+        }
+      },
+      "$description": "Soft rose, flesh tones and dawn."
+    }
+  }
+}

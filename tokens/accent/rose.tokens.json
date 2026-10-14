@@ -1,0 +1,23 @@
+{
+  "accent": {
+    "$type": "color",
+    "$root": {
+      "$value": "{glass.rose.$root}"
+    },
+    "lume": {
+      "$value": "{glass.rose.lume}"
+    },
+    "ink": {
+      "$value": "{glass.rose.ink}"
+    },
+    "pane": {
+      "$value": "{glass.rose.pane}"
+    },
+    "on": {
+      "$value": "{glass.rose.on}"
+    },
+    "on-pane": {
+      "$value": "{glass.rose.on-pane}"
+    }
+  }
+}

@@ -1,0 +1,549 @@
+{
+  "$description": "Vespers (Dusk). Candles lit against plum shadow. The warmest of the dark hours.",
+  "$extensions": {
+    "dev.sanctuary": {
+      "scheme": "dark",
+      "defaultAccent": "amber"
+    }
+  },
+  "surface": {
+    "$type": "color",
+    "sunken": {
+      "$value": {
+        "colorSpace": "oklch",
+        "components": [
+          0.175,
+          0.025,
+          345
+        ],
+        "hex": "#180c13"
+      }
+    },
+    "$root": {
+      "$value": {
+        "colorSpace": "oklch",
+        "components": [
+          0.205,
+          0.025,
+          345
+        ],
+        "hex": "#1f131a"
+      }
+    },
+    "raised-1": {
+      "$value": {
+        "colorSpace": "oklch",
+        "components": [
+          0.237,
+          0.025,
+          345
+        ],
+        "hex": "#271a21"
+      }
+    },
+    "raised-2": {
+      "$value": {
+        "colorSpace": "oklch",
+        "components": [
+          0.268,
+          0.025,
+          345
+        ],
+        "hex": "#2f2129"
+      }
+    },
+    "raised-3": {
+      "$value": {
+        "colorSpace": "oklch",
+        "components": [
+          0.3,
+          0.025,
+          345
+        ],
+        "hex": "#372931"
+      }
+    },
+    "raised-4": {
+      "$value": {
+        "colorSpace": "oklch",
+        "components": [
+          0.335,
+          0.025,
+          345
+        ],
+        "hex": "#40323a"
+      }
+    },
+    "inverse": {
+      "$value": {
+        "colorSpace": "oklch",
+        "components": [
+          0.93,
+          0.03,
+          75
+        ],
+        "hex": "#f4e6d2"
+      }
+    }
+  },
+  "text": {
+    "$type": "color",
+    "$root": {
+      "$value": {
+        "colorSpace": "oklch",
+        "components": [
+          0.93,
+          0.03,
+          75
+        ],
+        "hex": "#f4e6d2"
+      }
+    },
+    "muted": {
+      "$value": {
+        "colorSpace": "oklch",
+        "components": [
+          0.79,
+          0.03,
+          75
+        ],
+        "hex": "#c6b8a6"
+      }
+    },
+    "subtle": {
+      "$value": {
+        "colorSpace": "oklch",
+        "components": [
+          0.65,
+          0.03,
+          75
+        ],
+        "hex": "#9a8d7b"
+      }
+    },
+    "disabled": {
+      "$value": {
+        "colorSpace": "oklch",
+        "components": [
+          0.48,
+          0.03,
+          75
+        ],
+        "hex": "#685b4b"
+      }
+    },
+    "inverse": {
+      "$value": {
+        "colorSpace": "oklch",
+        "components": [
+          0.205,
+          0.025,
+          345
+        ],
+        "hex": "#1f131a"
+      }
+    }
+  },
+  "lead": {
+    "$type": "color",
+    "soft": {
+      "$value": {
+        "colorSpace": "oklch",
+        "components": [
+          0.31,
+          0.0325,
+          345
+        ],
+        "hex": "#3c2a34"
+      }
+    },
+    "$root": {
+      "$value": {
+        "colorSpace": "oklch",
+        "components": [
+          0.385,
+          0.0325,
+          345
+        ],
+        "hex": "#513d48"
+      }
+    },
+    "strong": {
+      "$value": {
+        "colorSpace": "oklch",
+        "components": [
+          0.52,
+          0.0325,
+          345
+        ],
+        "hex": "#77626d"
+      }
+    },
+    "came": {
+      "$value": {
+        "colorSpace": "oklch",
+        "components": [
+          0.1,
+          0.0325,
+          345
+        ],
+        "hex": "#090105"
+      }
+    }
+  },
+  "umbra": {
+    "$type": "color",
+    "key": {
+      "$value": {
+        "colorSpace": "oklch",
+        "components": [
+          0.05,
+          0.025,
+          345
+        ],
+        "alpha": 0.55,
+        "hex": "#020001"
+      }
+    },
+    "ambient": {
+      "$value": {
+        "colorSpace": "oklch",
+        "components": [
+          0.05,
+          0.025,
+          345
+        ],
+        "alpha": 0.35,
+        "hex": "#020001"
+      }
+    }
+  },
+  "scrim": {
+    "$type": "color",
+    "$value": {
+      "colorSpace": "oklch",
+      "components": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.6,
+      "hex": "#000000"
+    }
+  },
+  "glass": {
+    "$type": "color",
+    "ruby": {
+      "$root": {
+        "$value": "{pigment.ruby.300}"
+      },
+      "lume": {
+        "$value": "{pigment.ruby.200}"
+      },
+      "ink": {
+        "$value": "{pigment.ruby.200}"
+      },
+      "pane": {
+        "$value": "{pigment.ruby.800}"
+      },
+      "on": {
+        "$value": "{pigment.ruby.950}"
+      },
+      "on-pane": {
+        "$value": "{pigment.ruby.100}"
+      }
+    },
+    "ember": {
+      "$root": {
+        "$value": "{pigment.ember.300}"
+      },
+      "lume": {
+        "$value": "{pigment.ember.200}"
+      },
+      "ink": {
+        "$value": "{pigment.ember.200}"
+      },
+      "pane": {
+        "$value": "{pigment.ember.800}"
+      },
+      "on": {
+        "$value": "{pigment.ember.950}"
+      },
+      "on-pane": {
+        "$value": "{pigment.ember.100}"
+      }
+    },
+    "amber": {
+      "$root": {
+        "$value": "{pigment.amber.300}"
+      },
+      "lume": {
+        "$value": "{pigment.amber.200}"
+      },
+      "ink": {
+        "$value": "{pigment.amber.200}"
+      },
+      "pane": {
+        "$value": "{pigment.amber.800}"
+      },
+      "on": {
+        "$value": "{pigment.amber.950}"
+      },
+      "on-pane": {
+        "$value": "{pigment.amber.100}"
+      }
+    },
+    "gilt": {
+      "$root": {
+        "$value": "{pigment.gilt.300}"
+      },
+      "lume": {
+        "$value": "{pigment.gilt.200}"
+      },
+      "ink": {
+        "$value": "{pigment.gilt.200}"
+      },
+      "pane": {
+        "$value": "{pigment.gilt.800}"
+      },
+      "on": {
+        "$value": "{pigment.gilt.950}"
+      },
+      "on-pane": {
+        "$value": "{pigment.gilt.100}"
+      }
+    },
+    "verdure": {
+      "$root": {
+        "$value": "{pigment.verdure.300}"
+      },
+      "lume": {
+        "$value": "{pigment.verdure.200}"
+      },
+      "ink": {
+        "$value": "{pigment.verdure.200}"
+      },
+      "pane": {
+        "$value": "{pigment.verdure.800}"
+      },
+      "on": {
+        "$value": "{pigment.verdure.950}"
+      },
+      "on-pane": {
+        "$value": "{pigment.verdure.100}"
+      }
+    },
+    "viridian": {
+      "$root": {
+        "$value": "{pigment.viridian.300}"
+      },
+      "lume": {
+        "$value": "{pigment.viridian.200}"
+      },
+      "ink": {
+        "$value": "{pigment.viridian.200}"
+      },
+      "pane": {
+        "$value": "{pigment.viridian.800}"
+      },
+      "on": {
+        "$value": "{pigment.viridian.950}"
+      },
+      "on-pane": {
+        "$value": "{pigment.viridian.100}"
+      }
+    },
+    "azure": {
+      "$root": {
+        "$value": "{pigment.azure.300}"
+      },
+      "lume": {
+        "$value": "{pigment.azure.200}"
+      },
+      "ink": {
+        "$value": "{pigment.azure.200}"
+      },
+      "pane": {
+        "$value": "{pigment.azure.800}"
+      },
+      "on": {
+        "$value": "{pigment.azure.950}"
+      },
+      "on-pane": {
+        "$value": "{pigment.azure.100}"
+      }
+    },
+    "cobalt": {
+      "$root": {
+        "$value": "{pigment.cobalt.300}"
+      },
+      "lume": {
+        "$value": "{pigment.cobalt.200}"
+      },
+      "ink": {
+        "$value": "{pigment.cobalt.200}"
+      },
+      "pane": {
+        "$value": "{pigment.cobalt.800}"
+      },
+      "on": {
+        "$value": "{pigment.cobalt.950}"
+      },
+      "on-pane": {
+        "$value": "{pigment.cobalt.100}"
+      }
+    },
+    "indigo": {
+      "$root": {
+        "$value": "{pigment.indigo.300}"
+      },
+      "lume": {
+        "$value": "{pigment.indigo.200}"
+      },
+      "ink": {
+        "$value": "{pigment.indigo.200}"
+      },
+      "pane": {
+        "$value": "{pigment.indigo.800}"
+      },
+      "on": {
+        "$value": "{pigment.indigo.950}"
+      },
+      "on-pane": {
+        "$value": "{pigment.indigo.100}"
+      }
+    },
+    "amethyst": {
+      "$root": {
+        "$value": "{pigment.amethyst.300}"
+      },
+      "lume": {
+        "$value": "{pigment.amethyst.200}"
+      },
+      "ink": {
+        "$value": "{pigment.amethyst.200}"
+      },
+      "pane": {
+        "$value": "{pigment.amethyst.800}"
+      },
+      "on": {
+        "$value": "{pigment.amethyst.950}"
+      },
+      "on-pane": {
+        "$value": "{pigment.amethyst.100}"
+      }
+    },
+    "murrey": {
+      "$root": {
+        "$value": "{pigment.murrey.300}"
+      },
+      "lume": {
+        "$value": "{pigment.murrey.200}"
+      },
+      "ink": {
+        "$value": "{pigment.murrey.200}"
+      },
+      "pane": {
+        "$value": "{pigment.murrey.800}"
+      },
+      "on": {
+        "$value": "{pigment.murrey.950}"
+      },
+      "on-pane": {
+        "$value": "{pigment.murrey.100}"
+      }
+    },
+    "rose": {
+      "$root": {
+        "$value": "{pigment.rose.300}"
+      },
+      "lume": {
+        "$value": "{pigment.rose.200}"
+      },
+      "ink": {
+        "$value": "{pigment.rose.200}"
+      },
+      "pane": {
+        "$value": "{pigment.rose.800}"
+      },
+      "on": {
+        "$value": "{pigment.rose.950}"
+      },
+      "on-pane": {
+        "$value": "{pigment.rose.100}"
+      }
+    }
+  },
+  "accent": {
+    "$type": "color",
+    "$root": {
+      "$value": "{glass.amber.$root}"
+    },
+    "lume": {
+      "$value": "{glass.amber.lume}"
+    },
+    "ink": {
+      "$value": "{glass.amber.ink}"
+    },
+    "pane": {
+      "$value": "{glass.amber.pane}"
+    },
+    "on": {
+      "$value": "{glass.amber.on}"
+    },
+    "on-pane": {
+      "$value": "{glass.amber.on-pane}"
+    }
+  },
+  "ansi": {
+    "$type": "color",
+    "red": {
+      "$value": "{glass.ruby.$root}"
+    },
+    "bright-red": {
+      "$value": "{glass.ruby.lume}"
+    },
+    "green": {
+      "$value": "{glass.verdure.$root}"
+    },
+    "bright-green": {
+      "$value": "{glass.verdure.lume}"
+    },
+    "yellow": {
+      "$value": "{glass.gilt.$root}"
+    },
+    "bright-yellow": {
+      "$value": "{glass.gilt.lume}"
+    },
+    "blue": {
+      "$value": "{glass.cobalt.$root}"
+    },
+    "bright-blue": {
+      "$value": "{glass.cobalt.lume}"
+    },
+    "magenta": {
+      "$value": "{glass.amethyst.$root}"
+    },
+    "bright-magenta": {
+      "$value": "{glass.amethyst.lume}"
+    },
+    "cyan": {
+      "$value": "{glass.viridian.$root}"
+    },
+    "bright-cyan": {
+      "$value": "{glass.viridian.lume}"
+    },
+    "black": {
+      "$value": "{surface.raised-3}"
+    },
+    "white": {
+      "$value": "{text.muted}"
+    },
+    "bright-black": {
+      "$value": "{lead.strong}"
+    },
+    "bright-white": {
+      "$value": "{text.$root}"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "accent": {
+    "$type": "color",
+    "$root": {
+      "$value": "{glass.viridian.$root}"
+    },
+    "lume": {
+      "$value": "{glass.viridian.lume}"
+    },
+    "ink": {
+      "$value": "{glass.viridian.ink}"
+    },
+    "pane": {
+      "$value": "{glass.viridian.pane}"
+    },
+    "on": {
+      "$value": "{glass.viridian.on}"
+    },
+    "on-pane": {
+      "$value": "{glass.viridian.on-pane}"
+    }
+  }
+}

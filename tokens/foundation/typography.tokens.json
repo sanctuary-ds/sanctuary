@@ -1,0 +1,328 @@
+{
+  "font": {
+    "family": {
+      "$type": "fontFamily",
+      "display": {
+        "$value": [
+          "Cormorant Garamond",
+          "Cormorant",
+          "EB Garamond",
+          "Georgia",
+          "serif"
+        ]
+      },
+      "text": {
+        "$value": [
+          "Hanken Grotesk",
+          "Inter",
+          "system-ui",
+          "sans-serif"
+        ]
+      },
+      "mono": {
+        "$value": [
+          "JetBrains Mono",
+          "Cascadia Code",
+          "ui-monospace",
+          "monospace"
+        ]
+      },
+      "inscription": {
+        "$value": [
+          "Cinzel",
+          "Cormorant Garamond",
+          "Georgia",
+          "serif"
+        ]
+      }
+    },
+    "weight": {
+      "$type": "fontWeight",
+      "regular": {
+        "$value": 400
+      },
+      "medium": {
+        "$value": 500
+      },
+      "semibold": {
+        "$value": 600
+      },
+      "bold": {
+        "$value": 700
+      }
+    }
+  },
+  "type": {
+    "$type": "typography",
+    "display-lg": {
+      "$value": {
+        "fontFamily": "{font.family.display}",
+        "fontSize": {
+          "value": 4.5,
+          "unit": "rem"
+        },
+        "fontWeight": 500,
+        "letterSpacing": {
+          "value": -0.09,
+          "unit": "rem"
+        },
+        "lineHeight": 1.04
+      }
+    },
+    "display-md": {
+      "$value": {
+        "fontFamily": "{font.family.display}",
+        "fontSize": {
+          "value": 3.5,
+          "unit": "rem"
+        },
+        "fontWeight": 500,
+        "letterSpacing": {
+          "value": -0.063,
+          "unit": "rem"
+        },
+        "lineHeight": 1.08
+      }
+    },
+    "display-sm": {
+      "$value": {
+        "fontFamily": "{font.family.display}",
+        "fontSize": {
+          "value": 2.75,
+          "unit": "rem"
+        },
+        "fontWeight": 500,
+        "letterSpacing": {
+          "value": -0.04125,
+          "unit": "rem"
+        },
+        "lineHeight": 1.1
+      }
+    },
+    "headline-lg": {
+      "$value": {
+        "fontFamily": "{font.family.display}",
+        "fontSize": {
+          "value": 2.25,
+          "unit": "rem"
+        },
+        "fontWeight": 500,
+        "letterSpacing": {
+          "value": -0.0225,
+          "unit": "rem"
+        },
+        "lineHeight": 1.16
+      }
+    },
+    "headline-md": {
+      "$value": {
+        "fontFamily": "{font.family.display}",
+        "fontSize": {
+          "value": 1.875,
+          "unit": "rem"
+        },
+        "fontWeight": 600,
+        "letterSpacing": {
+          "value": -0.01125,
+          "unit": "rem"
+        },
+        "lineHeight": 1.2
+      }
+    },
+    "headline-sm": {
+      "$value": {
+        "fontFamily": "{font.family.display}",
+        "fontSize": {
+          "value": 1.5,
+          "unit": "rem"
+        },
+        "fontWeight": 600,
+        "letterSpacing": {
+          "value": 0,
+          "unit": "rem"
+        },
+        "lineHeight": 1.25
+      }
+    },
+    "title-lg": {
+      "$value": {
+        "fontFamily": "{font.family.text}",
+        "fontSize": {
+          "value": 1.25,
+          "unit": "rem"
+        },
+        "fontWeight": 600,
+        "letterSpacing": {
+          "value": -0.00625,
+          "unit": "rem"
+        },
+        "lineHeight": 1.4
+      }
+    },
+    "title-md": {
+      "$value": {
+        "fontFamily": "{font.family.text}",
+        "fontSize": {
+          "value": 1,
+          "unit": "rem"
+        },
+        "fontWeight": 600,
+        "letterSpacing": {
+          "value": 0,
+          "unit": "rem"
+        },
+        "lineHeight": 1.5
+      }
+    },
+    "title-sm": {
+      "$value": {
+        "fontFamily": "{font.family.text}",
+        "fontSize": {
+          "value": 0.875,
+          "unit": "rem"
+        },
+        "fontWeight": 600,
+        "letterSpacing": {
+          "value": 0.00438,
+          "unit": "rem"
+        },
+        "lineHeight": 1.43
+      }
+    },
+    "body-lg": {
+      "$value": {
+        "fontFamily": "{font.family.text}",
+        "fontSize": {
+          "value": 1.125,
+          "unit": "rem"
+        },
+        "fontWeight": 400,
+        "letterSpacing": {
+          "value": 0,
+          "unit": "rem"
+        },
+        "lineHeight": 1.6
+      }
+    },
+    "body-md": {
+      "$value": {
+        "fontFamily": "{font.family.text}",
+        "fontSize": {
+          "value": 1,
+          "unit": "rem"
+        },
+        "fontWeight": 400,
+        "letterSpacing": {
+          "value": 0,
+          "unit": "rem"
+        },
+        "lineHeight": 1.55
+      }
+    },
+    "body-sm": {
+      "$value": {
+        "fontFamily": "{font.family.text}",
+        "fontSize": {
+          "value": 0.875,
+          "unit": "rem"
+        },
+        "fontWeight": 400,
+        "letterSpacing": {
+          "value": 0.00263,
+          "unit": "rem"
+        },
+        "lineHeight": 1.5
+      }
+    },
+    "label-lg": {
+      "$value": {
+        "fontFamily": "{font.family.text}",
+        "fontSize": {
+          "value": 0.875,
+          "unit": "rem"
+        },
+        "fontWeight": 500,
+        "letterSpacing": {
+          "value": 0.00875,
+          "unit": "rem"
+        },
+        "lineHeight": 1.43
+      }
+    },
+    "label-md": {
+      "$value": {
+        "fontFamily": "{font.family.text}",
+        "fontSize": {
+          "value": 0.75,
+          "unit": "rem"
+        },
+        "fontWeight": 500,
+        "letterSpacing": {
+          "value": 0.015,
+          "unit": "rem"
+        },
+        "lineHeight": 1.34
+      }
+    },
+    "label-sm": {
+      "$value": {
+        "fontFamily": "{font.family.text}",
+        "fontSize": {
+          "value": 0.6875,
+          "unit": "rem"
+        },
+        "fontWeight": 500,
+        "letterSpacing": {
+          "value": 0.0275,
+          "unit": "rem"
+        },
+        "lineHeight": 1.45
+      }
+    },
+    "inscription": {
+      "$value": {
+        "fontFamily": "{font.family.inscription}",
+        "fontSize": {
+          "value": 0.75,
+          "unit": "rem"
+        },
+        "fontWeight": 600,
+        "letterSpacing": {
+          "value": 0.135,
+          "unit": "rem"
+        },
+        "lineHeight": 1.34
+      }
+    },
+    "code-md": {
+      "$value": {
+        "fontFamily": "{font.family.mono}",
+        "fontSize": {
+          "value": 0.875,
+          "unit": "rem"
+        },
+        "fontWeight": 400,
+        "letterSpacing": {
+          "value": 0,
+          "unit": "rem"
+        },
+        "lineHeight": 1.6
+      }
+    },
+    "code-sm": {
+      "$value": {
+        "fontFamily": "{font.family.mono}",
+        "fontSize": {
+          "value": 0.78125,
+          "unit": "rem"
+        },
+        "fontWeight": 400,
+        "letterSpacing": {
+          "value": 0,
+          "unit": "rem"
+        },
+        "lineHeight": 1.6
+      }
+    }
+  }
+}

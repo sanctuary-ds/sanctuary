@@ -1,0 +1,23 @@
+{
+  "accent": {
+    "$type": "color",
+    "$root": {
+      "$value": "{glass.verdure.$root}"
+    },
+    "lume": {
+      "$value": "{glass.verdure.lume}"
+    },
+    "ink": {
+      "$value": "{glass.verdure.ink}"
+    },
+    "pane": {
+      "$value": "{glass.verdure.pane}"
+    },
+    "on": {
+      "$value": "{glass.verdure.on}"
+    },
+    "on-pane": {
+      "$value": "{glass.verdure.on-pane}"
+    }
+  }
+}

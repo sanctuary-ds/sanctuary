@@ -1,0 +1,23 @@
+{
+  "accent": {
+    "$type": "color",
+    "$root": {
+      "$value": "{glass.amethyst.$root}"
+    },
+    "lume": {
+      "$value": "{glass.amethyst.lume}"
+    },
+    "ink": {
+      "$value": "{glass.amethyst.ink}"
+    },
+    "pane": {
+      "$value": "{glass.amethyst.pane}"
+    },
+    "on": {
+      "$value": "{glass.amethyst.on}"
+    },
+    "on-pane": {
+      "$value": "{glass.amethyst.on-pane}"
+    }
+  }
+}

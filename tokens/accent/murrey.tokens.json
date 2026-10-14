@@ -1,0 +1,23 @@
+{
+  "accent": {
+    "$type": "color",
+    "$root": {
+      "$value": "{glass.murrey.$root}"
+    },
+    "lume": {
+      "$value": "{glass.murrey.lume}"
+    },
+    "ink": {
+      "$value": "{glass.murrey.ink}"
+    },
+    "pane": {
+      "$value": "{glass.murrey.pane}"
+    },
+    "on": {
+      "$value": "{glass.murrey.on}"
+    },
+    "on-pane": {
+      "$value": "{glass.murrey.on-pane}"
+    }
+  }
+}
