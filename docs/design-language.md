@@ -66,13 +66,13 @@ A flavor chooses which tone of a pigment plays each role:
 | Role | Purpose | Dark flavors | Matins | Lauds |
 |------|---------|--------------|--------|-------|
 | `glass-<p>` | The colour itself: fills, icons, accent text | 300 | 400 | 600 |
-| `-lume` | Brighter emission: hover, glow, links | 200 | 300 | 400 |
-| `-ink` | Text-safe on tinted backgrounds | 200 | 300 | 700 |
+| `-lume` | Light, not text: glow, hover, gradients | 200 | 300 | 400 |
+| `-ink` | Accent text: links, and any text on panes or sunken stone | 200 | 300 | 700 |
 | `-pane` | A tinted container | 800 | 900 | 100 |
 | `-on` | Content on the colour | 950 | 950 | 50 |
 | `-on-pane` | Content on the pane | 100 | 200 | 800 |
 
-Every pairing above is tested for WCAG AA (4.5:1) in every flavor.
+Tested for WCAG AA (4.5:1) in every flavor, on every stone from `surface-sunken` to `surface-raised-4`: `ink`, `on` on the glass, `on-pane` and `ink` on the pane, and the glass itself on every stone except `surface-sunken`. On sunken stone (inputs, wells), accent text uses `ink`. `lume` carries no text guarantee: it is light, so use it for glows, hover and gradients, never for words.
 
 ## Glazing
 
@@ -111,7 +111,7 @@ Material Design models elevation as distance from a light above. Sanctuary model
 
 - **Lumen** (`elevation-0..5` with `surface-raised-n`): each level is lighter stone plus a deeper umbra. The stone stops at level 4, where Lauds already reaches white, so level 5 (modals, the most prominent floating surfaces) pairs `surface-raised-4` with the deepest umbra. In Lauds the shadow does most of the work.
 - **Cast** (`cast-sm`, `cast-md`, `cast-lg`): the coloured glow glass throws on its surroundings. It signals energy: hover, selection, an active window.
-- **Halo** (`halo`): the focus ring, a band of stone and then a band of light.
+- **Halo** (`halo`): the focus ring, a band of stone and then a ring of the accent, which clears the 3:1 that WCAG asks of focus indicators.
 
 Use Lumen for hierarchy and Cast for state. A surface should rarely need both at full strength.
 

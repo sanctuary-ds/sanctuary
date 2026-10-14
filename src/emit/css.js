@@ -73,7 +73,7 @@ function derived(states) {
     ['--san-cast-sm', `0 0 12px -2px ${mix('accent', 45)}`],
     ['--san-cast-md', `0 0 28px -4px ${mix('accent', 50)}`],
     ['--san-cast-lg', `0 0 18px -2px ${mix('accent-lume', 40)}, 0 0 72px -8px ${mix('accent', 55)}`],
-    ['--san-halo', '0 0 0 2px var(--san-surface), 0 0 0 4px var(--san-accent-lume)'],
+    ['--san-halo', '0 0 0 2px var(--san-surface), 0 0 0 4px var(--san-accent)'],
     ['--san-state-hover', `color-mix(in oklch, currentColor ${percent('hover')}%, transparent)`],
     ['--san-state-focus', `color-mix(in oklch, currentColor ${percent('focus')}%, transparent)`],
     ['--san-state-pressed', `color-mix(in oklch, currentColor ${percent('pressed')}%, transparent)`],

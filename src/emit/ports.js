@@ -15,7 +15,7 @@ selection_foreground    ${hex('text')}
 selection_background    ${hex('surface.raised-4')}
 cursor                  ${hex('accent')}
 cursor_text_color       ${hex('accent.on')}
-url_color               ${hex('accent.lume')}
+url_color               ${hex('accent.ink')}
 active_border_color     ${hex('accent')}
 inactive_border_color   ${hex('lead')}
 bell_border_color       ${hex('glass.amber')}

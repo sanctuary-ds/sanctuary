@@ -43,8 +43,8 @@ Every token is a custom property prefixed `--san-`. The name is the DTCG token p
 | Property | Use |
 |----------|-----|
 | `--san-glass-<p>` | The pigment in this flavor |
-| `--san-glass-<p>-lume` | Brighter: hover, glow, links |
-| `--san-glass-<p>-ink` | Text on tinted backgrounds |
+| `--san-glass-<p>-lume` | Brighter light: glow, hover, gradients. Not for text |
+| `--san-glass-<p>-ink` | Accent text: links, text on panes and on sunken stone |
 | `--san-glass-<p>-pane` | Tinted container |
 | `--san-glass-<p>-on` | Content on the pigment |
 | `--san-glass-<p>-on-pane` | Content on the pane |

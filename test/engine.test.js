@@ -48,19 +48,37 @@ test('every pigment has a full ramp of in-gamut, strictly darkening tones', () =
 test('text and accent roles meet WCAG AA against the surfaces of every flavor', () => {
   for (const flavor of flavorIds) {
     const hex = (path) => resolveHex(tokens, flavor, path);
-    for (const surface of ['surface', 'surface.sunken', 'surface.raised-2']) {
-      for (const text of ['text', 'text.muted', 'text.subtle']) {
-        const ratio = contrast(hex(text), hex(surface));
-        assert.ok(ratio >= 4.5, `${flavor}: ${text} on ${surface} is ${ratio.toFixed(2)}`);
-      }
+    const surfaces = ['surface', 'surface.sunken', 'surface.raised-1', 'surface.raised-2', 'surface.raised-3', 'surface.raised-4'];
+    const pass = (fg, bg) => {
+      const ratio = contrast(hex(fg), hex(bg));
+      assert.ok(ratio >= 4.5, `${flavor}: ${fg} on ${bg} is ${ratio.toFixed(2)}`);
+    };
+    for (const surface of surfaces) {
+      for (const text of ['text', 'text.muted', 'text.subtle']) pass(text, surface);
     }
+    // Every pairing the glass-role table in docs/design-language.md promises. Lume is light, not
+    // text, so it has no text guarantee; on sunken stone, accent text uses ink.
     for (const id of pigmentIds) {
-      const onSurface = contrast(hex(`glass.${id}`), hex('surface'));
-      const onGlass = contrast(hex(`glass.${id}.on`), hex(`glass.${id}`));
-      const onPane = contrast(hex(`glass.${id}.on-pane`), hex(`glass.${id}.pane`));
-      assert.ok(onSurface >= 4.5, `${flavor}: glass.${id} on surface is ${onSurface.toFixed(2)}`);
-      assert.ok(onGlass >= 4.5, `${flavor}: on glass.${id} is ${onGlass.toFixed(2)}`);
-      assert.ok(onPane >= 4.5, `${flavor}: on-pane glass.${id} is ${onPane.toFixed(2)}`);
+      const glass = `glass.${id}`;
+      for (const surface of surfaces) {
+        if (surface !== 'surface.sunken') pass(glass, surface);
+        pass(`${glass}.ink`, surface);
+      }
+      pass(`${glass}.ink`, `${glass}.pane`);
+      pass(`${glass}.on`, glass);
+      pass(`${glass}.on-pane`, `${glass}.pane`);
+    }
+  }
+});
+
+test('the focus halo is drawn in the accent, which clears 3:1 against its stone band', () => {
+  const css = emitCss(palette, tokens);
+  assert.match(css, /--san-halo: 0 0 0 2px var\(--san-surface\), 0 0 0 4px var\(--san-accent\);/);
+  for (const flavor of flavorIds) {
+    const hex = (path) => resolveHex(tokens, flavor, path);
+    for (const id of pigmentIds) {
+      const ratio = contrast(hex(`glass.${id}`), hex('surface'));
+      assert.ok(ratio >= 3, `${flavor}: halo in ${id} is ${ratio.toFixed(2)}`);
     }
   }
 });
@@ -151,6 +169,8 @@ test('every port ships one theme per flavor with sixteen ANSI colours', () => {
   for (const flavor of flavorIds) {
     const kitty = ports[`kitty/sanctuary-${flavor}.conf`];
     assert.equal([...kitty.matchAll(/^color\d+\s+#[0-9a-f]{6}$/gm)].length, 16);
+    // URLs are text, so they use the text-safe ink role rather than lume.
+    assert.match(kitty, new RegExp(`^url_color\\s+${resolveHex(tokens, flavor, 'accent.ink')}$`, 'm'));
   }
 });
 

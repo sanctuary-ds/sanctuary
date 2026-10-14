@@ -114,11 +114,11 @@
       "$value": {
         "colorSpace": "oklch",
         "components": [
-          0.64,
+          0.68,
           0.02,
           85
         ],
-        "hex": "#928b7f"
+        "hex": "#9e988b"
       }
     },
     "disabled": {
