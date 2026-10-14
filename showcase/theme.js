@@ -29,12 +29,13 @@
     window: pick('window', 'mono'),
   };
 
-  function apply() {
+  function apply({ persist = true } = {}) {
     root.dataset.sanFlavor = state.flavor;
     root.dataset.sanAccent = state.accent;
     root.dataset.sanGlazing = state.glazing;
     root.dataset.scheme = data.flavors[state.flavor].scheme;
     root.dataset.sanWindow = state.window;
+    if (!persist) return;
     try {
       localStorage.setItem(KEY, JSON.stringify(state));
     } catch {
@@ -42,6 +43,7 @@
     }
   }
 
-  apply();
+  // A shared link previews a look; only the visitor's own changes replace their saved theme.
+  apply({ persist: !Object.keys(options).some((axis) => query.has(axis)) });
   window.SanctuaryTheme = { state, options, apply };
 })();
