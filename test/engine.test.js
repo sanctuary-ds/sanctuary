@@ -90,7 +90,7 @@ test('the stylesheet exposes every flavor, accent, glazing and window switch', (
   const css = emitCss(palette, tokens);
   for (const flavor of flavorIds) assert.ok(css.includes(`[data-san-flavor="${flavor}"]`), flavor);
   for (const id of pigmentIds) assert.ok(css.includes(`[data-san-accent="${id}"]`), id);
-  for (const glazing of ['pot-metal', 'flashed', 'grisaille']) {
+  for (const glazing of Object.keys(palette.glazings)) {
     assert.ok(css.includes(`[data-san-glazing="${glazing}"]`), glazing);
   }
   for (const id of ['mono', 'harmonic']) assert.ok(css.includes(`[data-san-window="${id}"]`), id);
@@ -104,6 +104,11 @@ test('the stylesheet exposes every flavor, accent, glazing and window switch', (
   for (const [, name] of css.matchAll(/var\((--san-[a-z0-9-]+)/g)) {
     assert.ok(declared.has(name), `${name} is used but never declared`);
   }
+});
+
+test('a glazing declared in the palette without CSS fails the build instead of shipping silently', () => {
+  const glazings = { ...palette.glazings, stained: { name: 'Stained', note: 'Not implemented.' } };
+  assert.throws(() => emitCss({ ...palette, glazings }, tokens), /glazing "stained"/);
 });
 
 test('the harmonic window leads each accent with its two neighbours on the hue wheel', () => {

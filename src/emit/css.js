@@ -154,7 +154,8 @@ export function emitCss(palette, tokens) {
 
   out.push('/* Light derived from the active flavor and accent. Pot-metal is the default glazing. */');
   out.push(block(ANY_SCOPE, derived(files['foundation/elevation.tokens.json'].state)));
-  for (const id of ['pot-metal', 'flashed', 'grisaille']) {
+  for (const id of Object.keys(palette.glazings)) {
+    if (!glaze[id]) throw new Error(`No CSS is defined for glazing "${id}"; add it to the glaze table in src/emit/css.js.`);
     out.push(block(scoped('data-san-glazing', id), glaze[id]));
   }
 
