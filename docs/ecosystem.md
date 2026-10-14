@@ -1,6 +1,6 @@
 # Ecosystem
 
-This repository is the seed of the [`sanctuary-ds`](https://github.com/sanctuary-ds) GitHub organisation; packages publish under the `@sanctuary-ds` npm scope. It holds the one thing every other module depends on: the palette and tokens. This page proposes how the rest should be split. Nothing here exists yet except the first row.
+This repository is the seed of the [`sanctuary-ds`](https://github.com/sanctuary-ds) GitHub organisation; packages publish under the `@sanctuary-ds` npm scope. It holds the one thing every other module depends on: the palette and tokens. This page maps how the rest is split and records the decisions that cross repositories.
 
 ## Proposed repositories
 
@@ -9,8 +9,10 @@ This repository is the seed of the [`sanctuary-ds`](https://github.com/sanctuary
 | `sanctuary` (this one) | Token engine, DTCG tokens, stylesheet, palette, showcase, design docs | Nothing | Founded |
 | `elements` | The Lit web component library (`<san-button>`, ...) | `sanctuary` tokens | Planned |
 | `ports` | One directory or repository per application theme | `palette.json` | Seeded in `ports/` here |
-| `website` | Documentation site and the public showcase | `sanctuary`, `elements` | Planned |
+| [`sanctuary-ds.github.io`](https://github.com/sanctuary-ds/sanctuary-ds.github.io) | Public site: home, playground, documentation; see its [roadmap](https://github.com/sanctuary-ds/sanctuary-ds.github.io/blob/main/ROADMAP.md) | `sanctuary`, later `elements` | Roadmap written |
 | `.github` | Organisation profile, contribution guide, issue templates | Nothing | Planned |
+
+Each repository has a `ROADMAP.md` with its scope, phases and its contract with this one. Decisions that cross repositories are taken here first and recorded on this page; the other repositories then update their roadmap and their pinned version of the tokens.
 
 Keep ports in this repository until there are enough of them, with enough outside contributors, to justify the overhead of separate repositories. Splitting early costs more than it returns.
 
