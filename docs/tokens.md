@@ -28,7 +28,7 @@ Every token is a custom property prefixed `--san-`. The name is the DTCG token p
 |----------|-----|
 | `--san-surface-sunken` | Wells, inputs, the page behind panels |
 | `--san-surface` | The base surface |
-| `--san-surface-raised-1` … `-4` | Lumen levels 1 to 4 |
+| `--san-surface-raised-1` … `-4` | Lumen levels 1 to 4; level 5 reuses `raised-4` |
 | `--san-surface-inverse`, `--san-text-inverse` | Tooltips, toasts |
 | `--san-text`, `-muted`, `-subtle`, `-disabled` | Text, in falling emphasis |
 | `--san-lead-soft`, `--san-lead`, `--san-lead-strong` | Dividers, borders, emphasised borders |

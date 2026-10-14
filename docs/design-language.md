@@ -109,7 +109,7 @@ Five fixed gradients exist for a single place, such as a cover or an illustratio
 
 Material Design models elevation as distance from a light above. Sanctuary models it as *illumination*: in a dark room, what is closer to you is better lit.
 
-- **Lumen** (`elevation-0..5` with `surface-raised-n`): each level is lighter stone plus a deeper umbra. In Lauds the stone tends to white and the shadow does the work.
+- **Lumen** (`elevation-0..5` with `surface-raised-n`): each level is lighter stone plus a deeper umbra. The stone stops at level 4, where Lauds already reaches white, so level 5 (modals, the most prominent floating surfaces) pairs `surface-raised-4` with the deepest umbra. In Lauds the shadow does most of the work.
 - **Cast** (`cast-sm`, `cast-md`, `cast-lg`): the coloured glow glass throws on its surroundings. It signals energy: hover, selection, an active window.
 - **Halo** (`halo`): the focus ring, a band of stone and then a band of light.
 

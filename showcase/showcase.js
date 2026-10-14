@@ -206,9 +206,11 @@
   }
 
   function renderLumen() {
+    // The stone stops brightening at level 4, where Lauds already reaches white; level 5 only deepens the umbra.
     const surfaces = ['surface', 'surface-raised-1', 'surface-raised-2', 'surface-raised-3', 'surface-raised-4', 'surface-raised-4'];
+    const label = (surface, level) => (level === 5 ? 'raised-4, deeper umbra' : surface.replace('surface-', ''));
     $('[data-render="lumen"]').innerHTML = surfaces
-      .map((surface, level) => `<div class="tile" style="background:var(--san-${surface});box-shadow:var(--san-elevation-${level})"><b>Lumen ${level}</b><span>${surface.replace('surface-', '')}</span></div>`)
+      .map((surface, level) => `<div class="tile" style="background:var(--san-${surface});box-shadow:var(--san-elevation-${level})"><b>Lumen ${level}</b><span>${label(surface, level)}</span></div>`)
       .join('');
   }
 
