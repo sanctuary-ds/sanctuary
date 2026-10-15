@@ -4,11 +4,6 @@
   const { state, options, apply } = window.SanctuaryTheme;
   const $ = (selector, scope = document) => scope.querySelector(selector);
   const $$ = (selector, scope = document) => [...scope.querySelectorAll(selector)];
-  const el = (html) => {
-    const template = document.createElement('template');
-    template.innerHTML = html.trim();
-    return template.content.firstElementChild;
-  };
   const titles = { ...data.flavors, ...data.glazings, ...data.windows };
   const label = (id) => titles[id]?.name ?? id[0].toUpperCase() + id.slice(1);
 
@@ -20,10 +15,14 @@
     const root = document.documentElement;
     root.classList.add('is-shifting');
     clearTimeout(set.timer);
-    set.timer = setTimeout(() => root.classList.remove('is-shifting'), 900);
+    set.timer = setTimeout(() => root.classList.remove('is-shifting'), procession());
     apply();
     sync();
   }
+
+  // The theme transition lasts as long as the motion token that drives it.
+  const procession = () =>
+    parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--san-duration-procession')) || 0;
 
   function sync() {
     for (const button of $$('[data-set]')) {
@@ -47,7 +46,7 @@
 
   document.addEventListener('keydown', (event) => {
     if (event.metaKey || event.ctrlKey || event.altKey || event.target.matches('input, select, textarea')) return;
-    const axis = { f: 'flavor', a: 'accent', g: 'glazing', w: 'window' }[event.key.toLowerCase()];
+    const axis = { f: 'flavor', a: 'accent', g: 'glazing', w: 'window' }[event.key?.toLowerCase()];
     if (!axis) return;
     const list = options[axis];
     set(axis, list[(list.indexOf(state[axis]) + 1) % list.length]);
@@ -118,6 +117,13 @@
   }
 
   /* ---------- sections ---------- */
+
+  // The hero counts what the palette ships, so it cannot drift from it.
+  function renderFacts() {
+    const counts = Object.fromEntries(Object.entries(options).map(([axis, list]) => [axis, list.length]));
+    counts.tones = Object.keys(Object.values(data.pigments)[0].tones).length;
+    for (const node of $$('[data-fact]')) node.textContent = counts[node.dataset.fact];
+  }
 
   function renderFlavors() {
     $('[data-render="flavors"]').innerHTML = options.flavor
@@ -246,6 +252,7 @@
 
   renderControls();
   for (const rose of $$('[data-rose]')) rose.innerHTML = roseWindow();
+  renderFacts();
   renderFlavors();
   renderPigments();
   renderGlazings();
