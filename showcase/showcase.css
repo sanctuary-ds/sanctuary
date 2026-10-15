@@ -338,7 +338,7 @@ kbd {
 .section__sub + .section__note { margin-top: calc(var(--san-space-3) * -1); }
 
 .grid { display: grid; gap: var(--san-space-6); }
-.grid--components { grid-template-columns: repeat(auto-fit, minmax(21rem, 1fr)); }
+.grid--components { grid-template-columns: repeat(auto-fit, minmax(min(21rem, 100%), 1fr)); }
 .grid--foundations { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
 .panel {
@@ -370,7 +370,7 @@ kbd {
 
 /* ---------- flavors ---------- */
 
-.flavors { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: var(--san-space-5); }
+.flavors { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr)); gap: var(--san-space-5); }
 
 .flavor {
   display: grid;
@@ -473,7 +473,7 @@ kbd {
 
 /* ---------- glazing ---------- */
 
-.glazings { display: grid; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); gap: var(--san-space-6); }
+.glazings { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(18rem, 100%), 1fr)); gap: var(--san-space-6); }
 .glazing { display: grid; gap: var(--san-space-3); justify-items: start; align-content: start; }
 .glazing p { color: var(--san-text-muted); font: var(--san-type-body-sm); }
 
@@ -842,6 +842,8 @@ kbd {
 
 .desktop {
   display: grid;
+  /* minmax(0, 1fr) lets the desktop shrink below the width of its widest bar. */
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--san-space-3);
   padding: var(--san-space-3);
   border: var(--san-border-width-came) solid var(--san-lead-came);
@@ -945,14 +947,27 @@ kbd {
   .ramp, .motion { grid-template-columns: 1fr; gap: var(--san-space-1); }
   .grid--foundations, .tiles { grid-template-columns: 1fr; }
   .lectern { position: static; }
-  .lectern__nav { display: none; }
   html { scroll-padding-top: var(--san-space-4); }
+  /* The section links stay reachable: one row that scrolls sideways instead of wrapping. */
+  .lectern__nav {
+    flex-wrap: nowrap;
+    width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-bottom: var(--san-space-1);
+  }
+  .lectern__nav a { flex: none; }
 }
 
 @media (max-width: 40rem) {
+  /* Each control puts its label above its choices, and the twelve accents wrap. */
+  .control { flex-direction: column; align-items: flex-start; gap: var(--san-space-1); }
+  .tesserae { flex-wrap: wrap; row-gap: var(--san-space-3); }
+  .seg__item { padding: 0 var(--san-space-2); }
   .card { grid-template-columns: 1fr; }
   .tone { height: 2rem; }
   .bar__title { display: none; }
+  .bar { flex-wrap: wrap; }
 }
 
 @media (prefers-reduced-motion: reduce) {

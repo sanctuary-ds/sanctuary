@@ -58,12 +58,27 @@ test('the showcase offers exactly the window modes the palette publishes', () =>
   assert.deepEqual([...theme.options.window], Object.keys(data.windowModes));
 });
 
-test('every hero fact in the showcase has a count to show', () => {
-  const { theme } = loadTheme();
-  const counted = [...Object.keys(theme.options), 'tones'];
+test('every hero fact in the showcase names a table of the palette data it counts', () => {
+  const data = JSON.parse(readFileSync(new URL('../dist/palette.json', import.meta.url), 'utf8'));
   const facts = [...read('index.html').matchAll(/data-fact="([^"]+)"/g)].map((match) => match[1]);
-  assert.ok(facts.length > 0, 'no hero facts found');
-  for (const fact of facts) assert.ok(counted.includes(fact), `${fact} has no count`);
+  assert.deepEqual(facts, ['flavors', 'pigments', 'tones', 'glazings', 'windowModes']);
+  for (const fact of facts.filter((name) => name !== 'tones')) assert.equal(typeof data[fact], 'object', fact);
+});
+
+test('a duration token converts to milliseconds whatever its unit', () => {
+  const { theme } = loadTheme();
+  assert.equal(theme.milliseconds('600ms'), 600);
+  assert.equal(theme.milliseconds(' 0.6s'), 600);
+  assert.equal(theme.milliseconds(''), 0, 'a missing token means there is nothing to wait for');
+});
+
+test('the showcase loads exactly the fonts the palette data lists', () => {
+  const data = JSON.parse(readFileSync(new URL('../dist/palette.json', import.meta.url), 'utf8'));
+  const families = Object.values(data.fonts)
+    .map(({ family, weights }) => `family=${family.replaceAll(' ', '+')}:wght@${weights.join(';')}`)
+    .sort();
+  const expected = `https://fonts.googleapis.com/css2?${families.join('&')}&display=swap`;
+  assert.ok(read('index.html').includes(`href="${expected}"`), `index.html should load ${expected}`);
 });
 
 const saved = { flavor: 'vespers', accent: 'amber', glazing: 'flashed', window: 'harmonic' };

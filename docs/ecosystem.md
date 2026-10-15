@@ -1,6 +1,6 @@
 # Ecosystem
 
-This repository is the seed of the [`sanctuary-ds`](https://github.com/sanctuary-ds) GitHub organisation; packages will publish under the `@sanctuary-ds` npm scope. It holds the one thing every other module depends on: the palette and tokens. This page maps how the rest is split and records the decisions that cross repositories.
+This repository is the seed of the [`sanctuary-ds`](https://github.com/sanctuary-ds) GitHub organization; packages will publish under the `@sanctuary-ds` npm scope. It holds the one thing every other module depends on: the palette and tokens. This page maps how the rest is split and records the decisions that cross repositories.
 
 ## Proposed repositories
 
@@ -10,7 +10,7 @@ This repository is the seed of the [`sanctuary-ds`](https://github.com/sanctuary
 | `elements` | The Lit web component library (`<san-button>`, ...) | `sanctuary` tokens | Planned |
 | `ports` | One directory or repository per application theme | `palette.json` | Seeded in `ports/` here |
 | [`sanctuary-ds.github.io`](https://github.com/sanctuary-ds/sanctuary-ds.github.io) | Public site: home, playground, documentation; see its [roadmap](https://github.com/sanctuary-ds/sanctuary-ds.github.io/blob/main/ROADMAP.md) | `sanctuary`, later `elements` | Roadmap written |
-| `.github` | Organisation profile, contribution guide, issue templates | Nothing | Planned |
+| `.github` | Organization profile, contribution guide, issue templates | Nothing | Planned |
 
 Each repository has a `ROADMAP.md` with its scope, phases and its contract with this one. Decisions that cross repositories are taken here first and recorded on this page; the other repositories then update their roadmap and their pinned version of the tokens.
 
@@ -26,7 +26,7 @@ The stylesheet is already shaped for Shadow DOM: custom properties inherit throu
 | Each component exposes its own tier-5 tokens (`--san-button-radius`) that default to system tokens | Local overrides without forking |
 | Theming attributes go on the host or any ancestor (`data-san-accent="ruby"`) | The same switch works for pages and for single components |
 | Glazing is a system axis, not a per-component `variant` | One attribute restyles every filled control consistently |
-| Ship `:focus-visible` with `--san-halo` and honour `prefers-reduced-motion` | Accessibility is part of the contract |
+| Ship `:focus-visible` with `--san-halo` and honor `prefers-reduced-motion` | Accessibility is part of the contract |
 
 Suggested first components, in dependency order: button, icon button, chip, text field, checkbox, radio, switch, tabs, menu, dialog, tooltip, card.
 
@@ -63,13 +63,13 @@ Candidates: foot, WezTerm, tmux, Zellij, Neovim, Rofi, Dunst, Starship, btop, Fi
 | Lead | Inactive window borders, gaps |
 | Accent | Active window border, cursor, focused workspace |
 | Flashed glazing | Blur and transparency of the compositor, tinted by the accent |
-| Cast | Coloured window shadow or glow on the active window |
+| Cast | Colored window shadow or glow on the active window |
 | Window | Wallpaper and lock-screen gradients |
 
 ## Versioning
 
 - Token names are the public API. Renaming or removing one is a breaking change; adding one is not.
-- Changing a colour value is a minor change if contrast guarantees still hold.
+- Changing a color value is a minor change if contrast guarantees still hold.
 - Publish from one version number across tokens, stylesheet and ports, so a port can state which palette it matches.
 
 ## Open decisions

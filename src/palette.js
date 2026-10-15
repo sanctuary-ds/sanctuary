@@ -108,6 +108,9 @@ export const FLAVORS = {
 };
 
 export const DEFAULT_FLAVOR = 'compline';
+// What a page shows before anyone chooses: solid glass, lit by the accent alone.
+export const DEFAULT_GLAZING = 'pot-metal';
+export const DEFAULT_WINDOW = 'mono';
 
 // Windows: three pigments leaded together, used wherever light is cast rather than applied.
 // Stops use the saturated body of each pigment and brighten along the gradient, in every flavor.

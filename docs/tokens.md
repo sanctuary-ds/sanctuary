@@ -20,7 +20,7 @@ Every token is a custom property prefixed `--san-`. The name is the DTCG token p
 .button:focus-visible { box-shadow: var(--san-halo); }
 ```
 
-## Colour
+## Color
 
 ### Stone, ink and lead (per flavor)
 
@@ -31,9 +31,9 @@ Every token is a custom property prefixed `--san-`. The name is the DTCG token p
 | `--san-surface-raised-1` … `-4` | Lumen levels 1 to 4; level 5 reuses `raised-4` |
 | `--san-surface-inverse`, `--san-text-inverse` | Tooltips, toasts |
 | `--san-text`, `-muted`, `-subtle`, `-disabled` | Text, in falling emphasis |
-| `--san-lead-soft`, `--san-lead`, `--san-lead-strong` | Dividers, borders, emphasised borders |
+| `--san-lead-soft`, `--san-lead`, `--san-lead-strong` | Dividers, borders, emphasized borders |
 | `--san-lead-came` | The near-black line between panes |
-| `--san-umbra-key`, `--san-umbra-ambient` | Shadow colours used by `elevation-*` |
+| `--san-umbra-key`, `--san-umbra-ambient` | Shadow colors used by `elevation-*` |
 | `--san-scrim` | Overlay behind modals |
 
 ### Glass (per flavor, per pigment)
@@ -65,16 +65,16 @@ These are computed from the active flavor, accent, glazing and window setting.
 
 | Property | Type | Use |
 |----------|------|-----|
-| `--san-glaze-bg`, `-bg-hover`, `-fg`, `-border` | colour | A glazed (accent-filled) element |
+| `--san-glaze-bg`, `-bg-hover`, `-fg`, `-border` | color | A glazed (accent-filled) element |
 | `--san-glaze-sheen` | image | Highlight layered over `-bg` |
 | `--san-glaze-glow` | shadow | Glow of the glazing |
 | `--san-glaze-blur` | filter | `backdrop-filter` value |
-| `--san-cast-sm`, `-md`, `-lg` | shadow | Coloured light around glass |
+| `--san-cast-sm`, `-md`, `-lg` | shadow | Colored light around glass |
 | `--san-halo` | shadow | Focus ring |
-| `--san-state-hover`, `-focus`, `-pressed` | colour | State layer; uses `currentColor`, so it follows the content colour |
+| `--san-state-hover`, `-focus`, `-pressed` | color | State layer; uses `currentColor`, so it follows the content color |
 | `--san-window` | gradient | The cast-light gradient |
-| `--san-window-a`, `-b`, `-c` | colour | Its three stops |
-| `--san-harmony-a`, `-b`, `-c` | colour | The accent and its two hue-wheel neighbours; read by `data-san-window="harmonic"` |
+| `--san-window-a`, `-b`, `-c` | color | Its three stops |
+| `--san-harmony-a`, `-b`, `-c` | color | The accent and its two hue-wheel neighbors; read by `data-san-window="harmonic"` |
 | `--san-window-rosace`, `-jesse`, `-lancet`, `-aureole`, `-vesperal` | gradient | Named windows: fixed, independent of the accent, for one specific place |
 | `--san-elevation-0` … `-5` | shadow | Lumen shadows (pair with `surface-raised-n`) |
 
@@ -107,7 +107,7 @@ Type roles: `display-lg/md/sm`, `headline-lg/md/sm`, `title-lg/md/sm`, `body-lg/
 | `flavor` | `lauds`, `vespers`, `compline`, `matins` | `compline` |
 | `accent` | `flavor` (keep the flavor's default) or any pigment | `flavor` |
 
-Glazing, cast, halo, state layers and the arch shapes are not in the token files: the format has no colour functions or string type. They are defined in `src/emit/css.js`.
+Glazing, cast, halo, state layers and the arch shapes are not in the token files: the format has no color functions or string type. They are defined in `src/emit/css.js`.
 
 ## Using the plain palette
 
@@ -119,4 +119,11 @@ Glazing, cast, halo, state layers and the arch shapes are not in the token files
   "pigments": { "cobalt": { "hue": 259, "tones": { "300": "#9bc1fb" } } } }
 ```
 
-It also lists the named windows (`windows`), the values of `data-san-window` (`windowModes`) and the glazings (`glazings`), each with a display name and a note, so a tool can offer the same choices as the stylesheet.
+It also lists the named windows (`windows`), the values of `data-san-window` (`windowModes`) and the glazings (`glazings`), each with a display name and a note, so a tool can offer the same choices as the stylesheet. `defaultFlavor`, `defaultGlazing` and `defaultWindow` name what the stylesheet shows before anyone chooses.
+
+`fonts` lists each font family with its fallbacks, its generic family, and the weights and styles the type scale uses, so a site loads exactly those:
+
+```json
+"fonts": { "text": { "family": "Hanken Grotesk", "fallbacks": ["Inter", "system-ui"],
+    "generic": "sans-serif", "weights": [400, 500, 600], "styles": ["normal"] } }
+```
