@@ -5,23 +5,51 @@ import { runInNewContext } from 'node:vm';
 
 const read = (file) => readFileSync(new URL(`../showcase/${file}`, import.meta.url), 'utf8');
 
+// Storage that starts out holding `saved` under whichever single key theme.js uses,
+// so the tests do not repeat that key.
+function memoryStorage(saved) {
+  let key = null;
+  let value = saved ? JSON.stringify(saved) : null;
+  const claim = (name) => {
+    key ??= name;
+    assert.equal(name, key, 'theme.js keeps the theme under one storage key');
+  };
+  return {
+    storage: {
+      getItem: (name) => (claim(name), value),
+      setItem: (name, next) => {
+        claim(name);
+        value = String(next);
+      },
+    },
+    stored: () => JSON.parse(value ?? 'null'),
+  };
+}
+
 // Runs theme.js as the browser would, against an in-memory page and storage.
 function loadTheme({ search = '', saved } = {}) {
-  const store = new Map(saved ? [['sanctuary:showcase', JSON.stringify(saved)]] : []);
+  const { storage, stored } = memoryStorage(saved);
   const page = {
     URLSearchParams,
     location: { search },
     document: { documentElement: { dataset: {} } },
-    localStorage: {
-      getItem: (key) => store.get(key) ?? null,
-      setItem: (key, value) => store.set(key, String(value)),
-    },
+    localStorage: storage,
   };
   page.window = page;
   runInNewContext(read('palette.js'), page);
   runInNewContext(read('theme.js'), page);
-  const stored = () => JSON.parse(store.get('sanctuary:showcase') ?? 'null');
   return { root: page.document.documentElement, theme: page.SanctuaryTheme, stored };
+}
+
+// Index just past the brace that closes the block opened at `start`; comments and strings in
+// the showcase CSS contain no braces, so counting them is enough.
+function blockEnd(css, start) {
+  let depth = 0;
+  for (let i = start; i < css.length; i += 1) {
+    if (css[i] === '{') depth += 1;
+    if (css[i] === '}' && --depth === 0) return i + 1;
+  }
+  return css.length;
 }
 
 const saved = { flavor: 'vespers', accent: 'amber', glazing: 'flashed', window: 'harmonic' };
@@ -55,5 +83,6 @@ test('the slow theme transition only runs when the user allows motion', () => {
   const at = css.indexOf('html.is-shifting');
   assert.ok(at > 0, 'theme transition rule not found');
   const opened = css.lastIndexOf('@media (prefers-reduced-motion: no-preference)', at);
-  assert.ok(opened > 0 && !css.slice(opened, at).includes('\n}\n'), 'html.is-shifting must sit inside a no-preference media query');
+  assert.ok(opened > 0, 'no no-preference media query before the theme transition');
+  assert.ok(at < blockEnd(css, css.indexOf('{', opened)), 'html.is-shifting must sit inside the no-preference media query');
 });
