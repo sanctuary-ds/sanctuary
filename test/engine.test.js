@@ -180,6 +180,16 @@ test('the palette data lists each font family with exactly the weights the type 
   }
 });
 
+test('every font in the palette data has the stylesheet variable of the same name', () => {
+  // Consumers that host their own fonts map fonts.<role> onto --san-font-family-<role>.
+  const css = emitCss(palette, tokens);
+  for (const [role, font] of Object.entries(data.fonts)) {
+    const declared = css.match(new RegExp(`--san-font-family-${role}: ([^;]+);`));
+    assert.ok(declared, `--san-font-family-${role} is not declared`);
+    assert.ok(declared[1].startsWith(`"${font.family}"`) || declared[1].startsWith(font.family), role);
+  }
+});
+
 test('the harmonic window leads each accent with its two neighbours on the hue wheel', () => {
   assert.deepEqual(harmony('cobalt'), ['azure', 'cobalt', 'indigo']);
   // The wheel is circular: rose (3°) sits between murrey (342°) and ruby (24°).

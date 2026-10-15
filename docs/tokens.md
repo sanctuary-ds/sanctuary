@@ -121,9 +121,34 @@ Glazing, cast, halo, state layers and the arch shapes are not in the token files
 
 It also lists the named windows (`windows`), the values of `data-san-window` (`windowModes`) and the glazings (`glazings`), each with a display name and a note, so a tool can offer the same choices as the stylesheet. `defaultFlavor`, `defaultGlazing` and `defaultWindow` name what the stylesheet shows before anyone chooses.
 
-`fonts` lists each font family with its fallbacks, its generic family, and the weights and styles the type scale uses, so a site loads exactly those:
+`fonts` lists each font family with its fallbacks, its generic family, and the weights the type scale uses, so a site loads exactly those. `styles` is `["normal"]` for every family today, because no type role sets an italic:
 
 ```json
 "fonts": { "text": { "family": "Hanken Grotesk", "fallbacks": ["Inter", "system-ui"],
     "generic": "sans-serif", "weights": [400, 500, 600], "styles": ["normal"] } }
 ```
+
+## Fonts
+
+Sanctuary names its fonts but does not load them. Each key of `fonts` in `palette.json` is a font role, and the stylesheet exposes the same role as a custom property:
+
+| Role | Custom property | Used by |
+|------|-----------------|---------|
+| `display` | `--san-font-family-display` | Display and headline type |
+| `text` | `--san-font-family-text` | Titles, body and labels |
+| `mono` | `--san-font-family-mono` | Code |
+| `inscription` | `--san-font-family-inscription` | Carved overlines |
+
+The match between a `fonts` key and its custom property is part of the contract, and a test keeps it true. Renaming a role is a breaking change.
+
+### Hosting your own fonts
+
+Load the families and weights listed in `fonts` with whatever your site uses (Google Fonts, Fontsource, self-hosted files). If your font is published under a different family name, for example `Cormorant Garamond Variable`, override the role on the root element:
+
+```css
+:root {
+  --san-font-family-display: "Cormorant Garamond Variable", "Cormorant Garamond", Georgia, serif;
+}
+```
+
+Override on `:root` (or `html`), not on a descendant. The type roles (`--san-type-*`) are declared on `:root` and resolve the family there, so an override on a nested element changes `font-family` declarations that read the role directly, but not the type roles.

@@ -2,19 +2,29 @@
 
 This repository is the seed of the [`sanctuary-ds`](https://github.com/sanctuary-ds) GitHub organization; packages will publish under the `@sanctuary-ds` npm scope. It holds the one thing every other module depends on: the palette and tokens. This page maps how the rest is split and records the decisions that cross repositories.
 
-## Proposed repositories
+## Repositories
 
 | Repository | Contents | Depends on | Status |
 |------------|----------|-----------|--------|
-| `sanctuary` (this one) | Token engine, DTCG tokens, stylesheet, palette, showcase, design docs | Nothing | Founded |
+| `sanctuary` (this one) | Token engine, DTCG tokens, stylesheet, palette and their technical docs; for now also the showcase, the design language and the first ports | Nothing | Active, not yet on npm |
+| [`sanctuary-ds.github.io`](https://github.com/sanctuary-ds/sanctuary-ds.github.io) | Public site: home, playground, documentation; see its [roadmap](https://github.com/sanctuary-ds/sanctuary-ds.github.io/blob/main/ROADMAP.md) | `sanctuary`, later `elements` | In progress |
+| [`.github`](https://github.com/sanctuary-ds/.github) | Organization profile, contributing guide, security policy, brand mark | Nothing | Active |
 | `elements` | The Lit web component library (`<san-button>`, ...) | `sanctuary` tokens | Planned |
-| `ports` | One directory or repository per application theme | `palette.json` | Seeded in `ports/` here |
-| [`sanctuary-ds.github.io`](https://github.com/sanctuary-ds/sanctuary-ds.github.io) | Public site: home, playground, documentation; see its [roadmap](https://github.com/sanctuary-ds/sanctuary-ds.github.io/blob/main/ROADMAP.md) | `sanctuary`, later `elements` | Roadmap written |
-| `.github` | Organization profile, contribution guide, issue templates | Nothing | Planned |
+| One repository per port | A theme for one application, with its templates | `palette.json` | Planned |
 
 Each repository has a `ROADMAP.md` with its scope, phases and its contract with this one. Decisions that cross repositories are taken here first and recorded on this page; the other repositories then update their roadmap and their pinned version of the tokens.
 
-Keep ports in this repository until there are enough of them, with enough outside contributors, to justify the overhead of separate repositories. Splitting early costs more than it returns.
+## What leaves this repository
+
+The core ends as a small, stable package: tokens, stylesheet, palette and the docs that define them. Everything else moves to the repository that consumes it.
+
+| Today here | Moves to | When |
+|------------|----------|------|
+| `showcase/` | The playground of `sanctuary-ds.github.io`, then deleted here | When the site's playground replaces it (site phase 2) |
+| `docs/design-language.md` | The site's `/docs/philosophy`; this repository keeps a link | Site phase 3 |
+| `ports/` and `src/emit/ports.js` | One repository per application, as Catppuccin does, with the template generator in its own repository | The ports milestone, not yet planned |
+
+Until then, changes to these parts still land here.
 
 ## Web components with Lit
 
@@ -72,9 +82,12 @@ Candidates: foot, WezTerm, tmux, Zellij, Neovim, Rofi, Dunst, Starship, btop, Fi
 - Changing a color value is a minor change if contrast guarantees still hold.
 - Publish from one version number across tokens, stylesheet and ports, so a port can state which palette it matches.
 
+## Fonts
+
+The core names its fonts and publishes them in `palette.json` (`fonts`), but does not load them: each consumer loads them its own way, from Google Fonts, Fontsource or its own files, and can override the family roles. See [Fonts](tokens.md#fonts) for the contract.
+
 ## Open decisions
 
 | Decision | Options | Note |
 |----------|---------|------|
-| Fonts | Keep the Google Fonts set or self-host | The showcase loads them from Google Fonts and falls back to system fonts offline |
 | Wide gamut | Add Display P3 pigments | The engine clamps to sRGB today |
