@@ -4,12 +4,7 @@
   const { state, options, apply } = window.SanctuaryTheme;
   const $ = (selector, scope = document) => scope.querySelector(selector);
   const $$ = (selector, scope = document) => [...scope.querySelectorAll(selector)];
-  const el = (html) => {
-    const template = document.createElement('template');
-    template.innerHTML = html.trim();
-    return template.content.firstElementChild;
-  };
-  const titles = { ...data.flavors, ...data.glazings, ...data.windows };
+  const titles = { ...data.flavors, ...data.glazings, ...data.windows, ...data.windowModes };
   const label = (id) => titles[id]?.name ?? id[0].toUpperCase() + id.slice(1);
 
   /* ---------- theme ---------- */
@@ -20,9 +15,18 @@
     const root = document.documentElement;
     root.classList.add('is-shifting');
     clearTimeout(set.timer);
-    set.timer = setTimeout(() => root.classList.remove('is-shifting'), 900);
+    set.timer = setTimeout(() => root.classList.remove('is-shifting'), procession());
     apply();
     sync();
+  }
+
+  // The theme transition lasts as long as the motion token that drives it, in ms or s.
+  // Without the token there is no slow transition to wait for.
+  function procession() {
+    const value = getComputedStyle(document.documentElement).getPropertyValue('--san-duration-procession').trim();
+    const amount = parseFloat(value);
+    if (Number.isNaN(amount)) return 0;
+    return value.endsWith('ms') ? amount : amount * 1000;
   }
 
   function sync() {
@@ -47,7 +51,7 @@
 
   document.addEventListener('keydown', (event) => {
     if (event.metaKey || event.ctrlKey || event.altKey || event.target.matches('input, select, textarea')) return;
-    const axis = { f: 'flavor', a: 'accent', g: 'glazing', w: 'window' }[event.key.toLowerCase()];
+    const axis = { f: 'flavor', a: 'accent', g: 'glazing', w: 'window' }[event.key?.toLowerCase()];
     if (!axis) return;
     const list = options[axis];
     set(axis, list[(list.indexOf(state[axis]) + 1) % list.length]);
@@ -119,6 +123,15 @@
 
   /* ---------- sections ---------- */
 
+  // The hero counts what the palette ships, so it cannot drift from it.
+  function renderFacts() {
+    const counts = Object.fromEntries(Object.entries(options).map(([axis, list]) => [axis, list.length]));
+    counts.tones = Object.keys(Object.values(data.pigments)[0].tones).length;
+    for (const node of $$('[data-fact]')) node.textContent = counts[node.dataset.fact];
+    const modes = Object.values(data.windowModes).map(({ name }) => name.toLowerCase());
+    $('[data-window-modes]').textContent = new Intl.ListFormat('en', { type: 'disjunction' }).format(modes);
+  }
+
   function renderFlavors() {
     $('[data-render="flavors"]').innerHTML = options.flavor
       .map((id) => {
@@ -187,14 +200,11 @@
   }
 
   function renderWindows() {
-    const modes = {
-      mono: { name: 'Mono', stops: 'one pigment', note: 'Pane, glass and lume of the current accent. The default.' },
-      harmonic: { name: 'Harmonic', stops: 'accent and neighbours', note: 'The accent leaded with the pigments on either side of it.' },
-    };
+    const modes = data.windowModes;
     const glass = '<span class="glow"><span class="window__lead"><span class="window__glass"></span></span></span>';
     $('[data-render="windows"]').innerHTML = options.window
       .map((id) => `<button class="window" data-set="window:${id}" ${windowScope(id)}>
-          ${glass}<b>${modes[id].name}</b><span>${modes[id].stops}</span><small>${modes[id].note}</small>
+          ${glass}<b>${modes[id].name}</b><span>${modes[id].source}</span><small>${modes[id].note}</small>
         </button>`)
       .join('');
     // Named windows are fixed gradients, shown here as they would be placed by hand.
@@ -246,6 +256,7 @@
 
   renderControls();
   for (const rose of $$('[data-rose]')) rose.innerHTML = roseWindow();
+  renderFacts();
   renderFlavors();
   renderPigments();
   renderGlazings();

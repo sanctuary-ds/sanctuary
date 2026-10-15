@@ -7,7 +7,7 @@
     flavor: Object.keys(data.flavors),
     accent: Object.keys(data.pigments),
     glazing: Object.keys(data.glazings),
-    window: ['mono', 'harmonic'],
+    window: Object.keys(data.windowModes),
   };
 
   let saved = {};

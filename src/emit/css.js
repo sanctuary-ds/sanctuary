@@ -67,21 +67,11 @@ const monoStops = [
   ['--san-window-c', 'var(--san-accent-lume)'],
 ];
 
-function derived(states) {
-  const percent = (key) => Math.round(states[key].$value * 100);
-  return [
-    ['--san-cast-sm', `0 0 12px -2px ${mix('accent', 45)}`],
-    ['--san-cast-md', `0 0 28px -4px ${mix('accent', 50)}`],
-    ['--san-cast-lg', `0 0 18px -2px ${mix('accent-lume', 40)}, 0 0 72px -8px ${mix('accent', 55)}`],
-    ['--san-halo', '0 0 0 2px var(--san-surface), 0 0 0 4px var(--san-accent)'],
-    ['--san-state-hover', `color-mix(in oklch, currentColor ${percent('hover')}%, transparent)`],
-    ['--san-state-focus', `color-mix(in oklch, currentColor ${percent('focus')}%, transparent)`],
-    ['--san-state-pressed', `color-mix(in oklch, currentColor ${percent('pressed')}%, transparent)`],
-    ...monoStops,
-    ['--san-window', windowGradient(['a', 'b', 'c'].map((stop) => `var(--san-window-${stop})`))],
-    ...glaze['pot-metal'],
-  ];
-}
+// Window modes: where the three window stops come from.
+const windowModeStops = {
+  mono: monoStops,
+  harmonic: [...'abc'].map((stop) => [`--san-window-${stop}`, `var(--san-harmony-${stop})`]),
+};
 
 // Glazing: how the accent is rendered on a filled element.
 const glaze = {
@@ -113,6 +103,22 @@ const glaze = {
     ['--san-glaze-blur', 'none'],
   ],
 };
+
+function derived(states) {
+  const percent = (key) => Math.round(states[key].$value * 100);
+  return [
+    ['--san-cast-sm', `0 0 12px -2px ${mix('accent', 45)}`],
+    ['--san-cast-md', `0 0 28px -4px ${mix('accent', 50)}`],
+    ['--san-cast-lg', `0 0 18px -2px ${mix('accent-lume', 40)}, 0 0 72px -8px ${mix('accent', 55)}`],
+    ['--san-halo', '0 0 0 2px var(--san-surface), 0 0 0 4px var(--san-accent)'],
+    ['--san-state-hover', `color-mix(in oklch, currentColor ${percent('hover')}%, transparent)`],
+    ['--san-state-focus', `color-mix(in oklch, currentColor ${percent('focus')}%, transparent)`],
+    ['--san-state-pressed', `color-mix(in oklch, currentColor ${percent('pressed')}%, transparent)`],
+    ...monoStops,
+    ['--san-window', windowGradient(['a', 'b', 'c'].map((stop) => `var(--san-window-${stop})`))],
+    ...glaze['pot-metal'],
+  ];
+}
 
 const windowTones = (pigments) => pigments.map((pigment, i) => `var(--san-pigment-${pigment}-${WINDOW_TONES[i]})`);
 
@@ -160,7 +166,9 @@ export function emitCss(palette, tokens) {
   }
 
   out.push('/* Window: the cast light is one pigment (mono, the default) or the accent with its neighbours. */');
-  out.push(block(scoped('data-san-window', 'mono'), monoStops));
-  out.push(block(scoped('data-san-window', 'harmonic'), [...'abc'].map((stop) => [`--san-window-${stop}`, `var(--san-harmony-${stop})`])));
+  for (const id of Object.keys(palette.windowModes)) {
+    if (!windowModeStops[id]) throw new Error(`No CSS is defined for window mode "${id}"; add it to the window mode table in src/emit/css.js.`);
+    out.push(block(scoped('data-san-window', id), windowModeStops[id]));
+  }
   return out.join('\n');
 }

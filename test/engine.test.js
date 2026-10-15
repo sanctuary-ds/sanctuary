@@ -1,6 +1,9 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { execFileSync } from 'node:child_process';
+import { execFileSync, spawnSync } from 'node:child_process';
+import { cpSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { oklchToHex, hexToOklch, contrast } from '../src/color.js';
@@ -37,8 +40,13 @@ test('every pigment has a full ramp of in-gamut, strictly darkening tones', () =
     for (const tone of TONES) {
       assert.match(ramp[tone].hex, /^#[0-9a-f]{6}$/);
       // Gamut mapping must not have clipped: the hex has to decode to the same colour.
-      const [l] = hexToOklch(ramp[tone].hex);
-      assert.ok(Math.abs(l - ramp[tone].oklch[0]) < 0.006, `${id}.${tone} clipped`);
+      const [l, c, h] = hexToOklch(ramp[tone].hex);
+      const [expectedL, expectedC, expectedH] = ramp[tone].oklch;
+      assert.ok(Math.abs(l - expectedL) < 0.006, `${id}.${tone} lightness clipped`);
+      assert.ok(Math.abs(c - expectedC) < 0.004, `${id}.${tone} chroma clipped`);
+      // Hue is only meaningful with some chroma; 8-bit rounding moves it by up to about 2°.
+      const hueShift = Math.abs(((h - expectedH + 540) % 360) - 180);
+      if (expectedC > 0.02) assert.ok(hueShift < 3, `${id}.${tone} hue shifted by ${hueShift.toFixed(1)}°`);
       assert.ok(l < previous, `${id}.${tone} is not darker than the previous tone`);
       previous = l;
     }
@@ -108,10 +116,13 @@ test('the stylesheet exposes every flavor, accent, glazing and window switch', (
   const css = emitCss(palette, tokens);
   for (const flavor of flavorIds) assert.ok(css.includes(`[data-san-flavor="${flavor}"]`), flavor);
   for (const id of pigmentIds) assert.ok(css.includes(`[data-san-accent="${id}"]`), id);
-  for (const glazing of Object.keys(palette.glazings)) {
-    assert.ok(css.includes(`[data-san-glazing="${glazing}"]`), glazing);
-  }
-  for (const id of ['mono', 'harmonic']) assert.ok(css.includes(`[data-san-window="${id}"]`), id);
+  // The shipped glazings and window modes are public API: removing one must fail here, not only in the CSS.
+  const glazings = ['pot-metal', 'flashed', 'grisaille'];
+  assert.deepEqual(Object.keys(palette.glazings), glazings);
+  for (const id of glazings) assert.ok(css.includes(`[data-san-glazing="${id}"]`), id);
+  const windowModes = ['mono', 'harmonic'];
+  assert.deepEqual(Object.keys(palette.windowModes), windowModes);
+  for (const id of windowModes) assert.ok(css.includes(`[data-san-window="${id}"]`), id);
   // Named windows are fixed gradients to place by hand, not a theme-wide switch.
   for (const id of Object.keys(palette.windows)) {
     assert.ok(css.includes(`--san-window-${id}: linear-gradient(`), id);
@@ -127,6 +138,19 @@ test('the stylesheet exposes every flavor, accent, glazing and window switch', (
 test('a glazing declared in the palette without CSS fails the build instead of shipping silently', () => {
   const glazings = { ...palette.glazings, stained: { name: 'Stained', note: 'Not implemented.' } };
   assert.throws(() => emitCss({ ...palette, glazings }, tokens), /glazing "stained"/);
+});
+
+test('a field name keeps one type across the published palette tables', () => {
+  for (const window of Object.values(palette.windows)) assert.ok(Array.isArray(window.stops));
+  for (const [id, mode] of Object.entries(palette.windowModes)) {
+    assert.equal(mode.stops, undefined, `${id} describes its light in source, not stops`);
+    assert.equal(typeof mode.source, 'string', id);
+  }
+});
+
+test('a window mode declared in the palette without CSS fails the build instead of shipping silently', () => {
+  const windowModes = { ...palette.windowModes, prism: { name: 'Prism', stops: 'every pigment', note: 'Not implemented.' } };
+  assert.throws(() => emitCss({ ...palette, windowModes }, tokens), /window mode "prism"/);
 });
 
 test('the harmonic window leads each accent with its two neighbours on the hue wheel', () => {
@@ -177,4 +201,21 @@ test('every port ships one theme per flavor with sixteen ANSI colours', () => {
 test('committed build outputs are up to date with the sources', () => {
   const script = fileURLToPath(new URL('../scripts/build.js', import.meta.url));
   execFileSync(process.execPath, [script, '--check'], { stdio: 'pipe' });
+});
+
+test('the build check fails on a generated file that the sources no longer produce', () => {
+  const repo = fileURLToPath(new URL('..', import.meta.url));
+  const copy = mkdtempSync(join(tmpdir(), 'sanctuary-check-'));
+  try {
+    for (const dir of ['scripts', 'src', 'tokens', 'ports', 'dist', 'showcase']) cpSync(join(repo, dir), join(copy, dir), { recursive: true });
+    cpSync(join(repo, 'package.json'), join(copy, 'package.json'));
+    writeFileSync(join(copy, 'ports/kitty/sanctuary-old.conf'), '# left behind by a renamed flavor\n');
+    writeFileSync(join(copy, 'ports/kitty/.DS_Store'), '');
+    const result = spawnSync(process.execPath, [join(copy, 'scripts/build.js'), '--check'], { encoding: 'utf8' });
+    assert.equal(result.status, 1);
+    assert.match(result.stderr, /ports\/kitty\/sanctuary-old\.conf/);
+    assert.doesNotMatch(result.stderr, /\.DS_Store/, 'hidden files are not build output');
+  } finally {
+    rmSync(copy, { recursive: true, force: true });
+  }
 });

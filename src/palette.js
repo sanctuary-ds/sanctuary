@@ -37,7 +37,7 @@ export const PIGMENTS = {
 };
 
 // Which tone of a pigment plays each glass role, by flavor mode.
-const GLASS_ROLES = {
+const ROLE_TONES = {
   dark: { $root: 300, lume: 200, ink: 200, pane: 800, on: 950, 'on-pane': 100 },
   abyss: { $root: 400, lume: 300, ink: 300, pane: 900, on: 950, 'on-pane': 200 },
   light: { $root: 600, lume: 400, ink: 700, pane: 100, on: 50, 'on-pane': 800 },
@@ -51,7 +51,7 @@ export const FLAVORS = {
     scheme: 'light',
     blurb: 'First light on pale limestone. Ink on stone, colour pooling on the floor.',
     accent: 'cobalt',
-    roles: GLASS_ROLES.light,
+    roles: ROLE_TONES.light,
     stone: { hue: 85, chroma: 0.014 },
     surface: { sunken: 0.925, $root: 0.957, 'raised-1': 0.975, 'raised-2': 0.986, 'raised-3': 0.993, 'raised-4': 1 },
     lead: { soft: 0.875, $root: 0.77, strong: 0.5, came: 0.24 },
@@ -66,7 +66,7 @@ export const FLAVORS = {
     scheme: 'dark',
     blurb: 'Candles lit against plum shadow. The warmest of the dark hours.',
     accent: 'amber',
-    roles: GLASS_ROLES.dark,
+    roles: ROLE_TONES.dark,
     stone: { hue: 345, chroma: 0.025 },
     surface: { sunken: 0.175, $root: 0.205, 'raised-1': 0.237, 'raised-2': 0.268, 'raised-3': 0.3, 'raised-4': 0.335 },
     lead: { soft: 0.31, $root: 0.385, strong: 0.52, came: 0.1 },
@@ -81,7 +81,7 @@ export const FLAVORS = {
     scheme: 'dark',
     blurb: 'Blue-slate stone after the doors close. The default flavor.',
     accent: 'cobalt',
-    roles: GLASS_ROLES.dark,
+    roles: ROLE_TONES.dark,
     stone: { hue: 265, chroma: 0.022 },
     surface: { sunken: 0.15, $root: 0.18, 'raised-1': 0.212, 'raised-2': 0.243, 'raised-3': 0.275, 'raised-4': 0.31 },
     lead: { soft: 0.285, $root: 0.36, strong: 0.5, came: 0.08 },
@@ -96,7 +96,7 @@ export const FLAVORS = {
     scheme: 'dark',
     blurb: 'The crypt before any light. Near-black stone, jewel-deep glass.',
     accent: 'ruby',
-    roles: GLASS_ROLES.abyss,
+    roles: ROLE_TONES.abyss,
     stone: { hue: 285, chroma: 0.012 },
     surface: { sunken: 0.07, $root: 0.11, 'raised-1': 0.145, 'raised-2': 0.178, 'raised-3': 0.21, 'raised-4': 0.245 },
     lead: { soft: 0.22, $root: 0.3, strong: 0.45, came: 0.04 },
@@ -118,6 +118,12 @@ export const WINDOWS = {
   lancet: { name: 'Lancet', stops: ['viridian', 'azure', 'indigo'], note: 'A tall cool window, all blues.' },
   aureole: { name: 'Aureole', stops: ['gilt', 'amber', 'ember'], note: 'Halo light, gold falling to coal.' },
   vesperal: { name: 'Vesperal', stops: ['indigo', 'amethyst', 'rose'], note: 'The west window at sunset.' },
+};
+
+// Window modes: how the cast light follows the accent, set with data-san-window. Mono is the default.
+export const WINDOW_MODES = {
+  mono: { name: 'Mono', source: 'one pigment', note: 'Pane, glass and lume of the current accent. The default.' },
+  harmonic: { name: 'Harmonic', source: 'accent and neighbours', note: 'The accent leaded with the pigments on either side of it.' },
 };
 
 // The harmonic window is not a fixed set of stops: it leads an accent with its two
@@ -189,6 +195,7 @@ export function buildPalette() {
     pigments: Object.fromEntries(Object.entries(PIGMENTS).map(([id, def]) => [id, ramp(def)])),
     flavors: Object.fromEntries(Object.entries(FLAVORS).map(([id, def]) => [id, { ...def, colors: stone(def) }])),
     windows: WINDOWS,
+    windowModes: WINDOW_MODES,
     glazings: GLAZINGS,
   };
 }
