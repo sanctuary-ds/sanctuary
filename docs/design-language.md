@@ -1,6 +1,6 @@
 # Design language
 
-Sanctuary treats an interface as a dark building lit through coloured glass. Surfaces are stone and stay quiet; colour is light and is spent sparingly, where it means something.
+Sanctuary treats an interface as a dark building lit through colored glass. Surfaces are stone and stay quiet; color is light and is spent sparingly, where it means something.
 
 ## The one idea
 
@@ -9,10 +9,10 @@ A cathedral is mostly darkness. The windows read as intense because the stone ar
 | Principle | In practice |
 |-----------|-------------|
 | Stone is quiet | Surfaces are near-neutral with a faint tint. No decorative gradients on stone. |
-| Colour is light | Saturated colour marks action, state and focus. It is never wallpaper. |
-| Light is cast | Glass colours its surroundings: glows, pooled colour, tinted focus. |
+| Color is light | Saturated color marks action, state and focus. It is never wallpaper. |
+| Light is cast | Glass colors its surroundings: glows, pooled color, tinted focus. |
 | Lead holds it together | Dark, definite lines separate panes. Borders are structure, not decoration. |
-| Chiaroscuro | Contrast between surface levels is wide; mid-greys are avoided. |
+| Chiaroscuro | Contrast between surface levels is wide; mid-grays are avoided. |
 
 ## The four materials
 
@@ -21,7 +21,7 @@ A cathedral is mostly darkness. The windows read as intense because the stone ar
 | **Stone** | Surfaces, from the sunken floor to the most raised panel | `surface`, `surface-sunken`, `surface-raised-1..4` |
 | **Ink** | Text. Warm vellum on dark stone, cool ink on pale stone | `text`, `text-muted`, `text-subtle`, `text-disabled` |
 | **Lead** | Borders and dividers; `came` is the near-black line between panes | `lead-soft`, `lead`, `lead-strong`, `lead-came` |
-| **Glass** | Colour: twelve pigments, each with six roles per flavor | `glass-<pigment>`, `accent`, status and syntax aliases |
+| **Glass** | Color: twelve pigments, each with six roles per flavor | `glass-<pigment>`, `accent`, status and syntax aliases |
 
 Ink is tinted against the stone on purpose: warm text on cool stone is what candlelight looks like, and it keeps long reading comfortable.
 
@@ -36,7 +36,7 @@ A flavor is the hour at which you stand in the nave. The building is the same; t
 | Compline | Night | Blue slate, warm text | cobalt | The default: balanced and low-fatigue |
 | Matins | Deep night | Near-black, faintly violet | ruby | OLED screens, terminals, maximum chiaroscuro |
 
-Matins plays each glass one tone deeper than the other dark flavors, so colour stays jewel-like against black instead of pastel.
+Matins plays each glass one tone deeper than the other dark flavors, so color stays jewel-like against black instead of pastel.
 
 ## Pigments
 
@@ -65,11 +65,11 @@ A flavor chooses which tone of a pigment plays each role:
 
 | Role | Purpose | Dark flavors | Matins | Lauds |
 |------|---------|--------------|--------|-------|
-| `glass-<p>` | The colour itself: fills, icons, accent text | 300 | 400 | 600 |
+| `glass-<p>` | The color itself: fills, icons, accent text | 300 | 400 | 600 |
 | `-lume` | Light, not text: glow, hover, gradients | 200 | 300 | 400 |
 | `-ink` | Accent text: links, and any text on panes or sunken stone | 200 | 300 | 700 |
 | `-pane` | A tinted container | 800 | 900 | 100 |
-| `-on` | Content on the colour | 950 | 950 | 50 |
+| `-on` | Content on the color | 950 | 950 | 50 |
 | `-on-pane` | Content on the pane | 100 | 200 | 800 |
 
 Tested for WCAG AA (4.5:1) in every flavor, on every stone from `surface-sunken` to `surface-raised-4`: `ink`, `on` on the glass, `on-pane` and `ink` on the pane, and the glass itself on every stone except `surface-sunken`. On sunken stone (inputs, wells), accent text uses `ink`. `lume` carries no text guarantee: it is light, so use it for glows, hover and gradients, never for words.
@@ -80,18 +80,18 @@ Glazing is how an accent is held, independent of which accent it is.
 
 | Glazing | Real technique | Rendering | Use when |
 |---------|----------------|-----------|----------|
-| Pot-metal | Glass coloured through its body | Solid fill, content in `-on` | Default; clearest hierarchy |
-| Flashed | A thin coloured layer on clear glass | 20% tint, backdrop blur, coloured border, glow | Over imagery or wallpapers; desktop ricing |
-| Grisaille | Monochrome painted glass with coloured borders | Stone fill, accent only as the border | Dense tools where colour must be rare |
+| Pot-metal | Glass colored through its body | Solid fill, content in `-on` | Default; clearest hierarchy |
+| Flashed | A thin colored layer on clear glass | 20% tint, backdrop blur, colored border, glow | Over imagery or wallpapers; desktop ricing |
+| Grisaille | Monochrome painted glass with colored borders | Stone fill, accent only as the border | Dense tools where color must be rare |
 
 ## Windows
 
-The window is the light that is *cast*: hero backgrounds, progress fills, glows, illustration. It never replaces the accent on a control, and it is a setting of the light, not a fourth axis: it always follows the accent, so cast light and controls tell one colour story.
+The window is the light that is *cast*: hero backgrounds, progress fills, glows, illustration. It never replaces the accent on a control, and it is a setting of the light, not a fourth axis: it always follows the accent, so cast light and controls tell one color story.
 
 | Setting | Light | Use when |
 |---------|-------|----------|
 | Mono (default) | The accent alone, from its pane to its lume | The quiet choice; most interfaces |
-| Harmonic | The accent leaded with its two neighbours on the hue wheel (cobalt gives azure, cobalt, indigo) | Polychrome light that still agrees with the accent |
+| Harmonic | The accent leaded with its two neighbors on the hue wheel (cobalt gives azure, cobalt, indigo) | Polychrome light that still agrees with the accent |
 
 ### Named windows
 
@@ -110,7 +110,7 @@ Five fixed gradients exist for a single place, such as a cover or an illustratio
 Material Design models elevation as distance from a light above. Sanctuary models it as *illumination*: in a dark room, what is closer to you is better lit.
 
 - **Lumen** (`elevation-0..5` with `surface-raised-n`): each level is lighter stone plus a deeper umbra. The stone stops at level 4, where Lauds already reaches white, so level 5 (modals, the most prominent floating surfaces) pairs `surface-raised-4` with the deepest umbra. In Lauds the shadow does most of the work.
-- **Cast** (`cast-sm`, `cast-md`, `cast-lg`): the coloured glow glass throws on its surroundings. It signals energy: hover, selection, an active window.
+- **Cast** (`cast-sm`, `cast-md`, `cast-lg`): the colored glow glass throws on its surroundings. It signals energy: hover, selection, an active window.
 - **Halo** (`halo`): the focus ring, a band of stone and then a ring of the accent, which clears the 3:1 that WCAG asks of focus indicators.
 
 Use Lumen for hierarchy and Cast for state. A surface should rarely need both at full strength.
@@ -143,5 +143,5 @@ Two speeds. Controls respond fast (`fast` 140ms, `base` 220ms). Light moves slow
 
 | Compared with | Shared idea | Difference |
 |---------------|-------------|------------|
-| Catppuccin | Flavors and accents as modular axes; ports for everything | Tonal ramps instead of one colour per name; a third axis (glazing) and cast light that follows the accent; chiaroscuro instead of pastel |
-| Material Design | Tiered tokens, tonal palettes, systemic type, shape, motion, state layers | Elevation as illumination with coloured cast light; arch shapes; stone, not paper |
+| Catppuccin | Flavors and accents as modular axes; ports for everything | Tonal ramps instead of one color per name; a third axis (glazing) and cast light that follows the accent; chiaroscuro instead of pastel |
+| Material Design | Tiered tokens, tonal palettes, systemic type, shape, motion, state layers | Elevation as illumination with colored cast light; arch shapes; stone, not paper |
