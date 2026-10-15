@@ -1,6 +1,6 @@
 # Ecosystem
 
-This repository is the seed of the [`sanctuary-ds`](https://github.com/sanctuary-ds) GitHub organisation; packages publish under the `@sanctuary-ds` npm scope. It holds the one thing every other module depends on: the palette and tokens. This page maps how the rest is split and records the decisions that cross repositories.
+This repository is the seed of the [`sanctuary-ds`](https://github.com/sanctuary-ds) GitHub organisation; packages will publish under the `@sanctuary-ds` npm scope. It holds the one thing every other module depends on: the palette and tokens. This page maps how the rest is split and records the decisions that cross repositories.
 
 ## Proposed repositories
 
@@ -49,7 +49,7 @@ These files are generated from templates and have not been loaded in each applic
 
 ### Adding a port
 
-1. Add a template function to `src/emit/ports.js` that takes a flavor and a `hex(path)` resolver.
+1. Add a template function to `src/emit/ports.js` with the signature `(flavor, hex, pigments)`: the flavor, a `hex(path)` resolver for its tokens, and the list of pigment ids, for ports that expose every pigment.
 2. Register it in `PORTS` with its file extension.
 3. Run `pnpm run build` and `pnpm test`.
 
