@@ -116,14 +116,13 @@ test('the stylesheet exposes every flavor, accent, glazing and window switch', (
   const css = emitCss(palette, tokens);
   for (const flavor of flavorIds) assert.ok(css.includes(`[data-san-flavor="${flavor}"]`), flavor);
   for (const id of pigmentIds) assert.ok(css.includes(`[data-san-accent="${id}"]`), id);
-  // The shipped glazings are public API: removing one must fail here, not only in the CSS.
-  assert.deepEqual(Object.keys(palette.glazings), ['pot-metal', 'flashed', 'grisaille']);
-  for (const glazing of ['pot-metal', 'flashed', 'grisaille']) {
-    assert.ok(css.includes(`[data-san-glazing="${glazing}"]`), glazing);
-  }
-  // The window modes are public API too: pinned here, and published in the palette data.
-  assert.deepEqual(Object.keys(palette.windowModes), ['mono', 'harmonic']);
-  for (const id of ['mono', 'harmonic']) assert.ok(css.includes(`[data-san-window="${id}"]`), id);
+  // The shipped glazings and window modes are public API: removing one must fail here, not only in the CSS.
+  const glazings = ['pot-metal', 'flashed', 'grisaille'];
+  assert.deepEqual(Object.keys(palette.glazings), glazings);
+  for (const id of glazings) assert.ok(css.includes(`[data-san-glazing="${id}"]`), id);
+  const windowModes = ['mono', 'harmonic'];
+  assert.deepEqual(Object.keys(palette.windowModes), windowModes);
+  for (const id of windowModes) assert.ok(css.includes(`[data-san-window="${id}"]`), id);
   // Named windows are fixed gradients to place by hand, not a theme-wide switch.
   for (const id of Object.keys(palette.windows)) {
     assert.ok(css.includes(`--san-window-${id}: linear-gradient(`), id);

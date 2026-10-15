@@ -20,9 +20,14 @@
     sync();
   }
 
-  // The theme transition lasts as long as the motion token that drives it.
-  const procession = () =>
-    parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--san-duration-procession')) || 0;
+  // The theme transition lasts as long as the motion token that drives it, in ms or s.
+  // Without the token there is no slow transition to wait for.
+  function procession() {
+    const value = getComputedStyle(document.documentElement).getPropertyValue('--san-duration-procession').trim();
+    const amount = parseFloat(value);
+    if (Number.isNaN(amount)) return 0;
+    return value.endsWith('ms') ? amount : amount * 1000;
+  }
 
   function sync() {
     for (const button of $$('[data-set]')) {

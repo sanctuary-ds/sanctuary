@@ -120,7 +120,6 @@ function derived(states) {
   ];
 }
 
-
 const windowTones = (pigments) => pigments.map((pigment, i) => `var(--san-pigment-${pigment}-${WINDOW_TONES[i]})`);
 
 // Declared wherever the accent is, so the harmonic window can follow it.

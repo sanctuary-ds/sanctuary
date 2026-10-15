@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Builds every generated artefact from src/. `--check` verifies them instead of writing.
 
-import { mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { dirname, join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -13,13 +13,16 @@ import { buildTokens, flatten, resolveToken } from '../src/tokens.js';
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const json = (value) => `${JSON.stringify(value, null, 2)}\n`;
 
-// Directories whose every file is generated, so anything else in them is left over.
+// Directories whose every file is generated, so anything else in them is left over. Only
+// `--check` reports leftovers: the build itself never deletes files it did not write.
 const GENERATED_DIRS = ['tokens', 'ports', 'dist'];
 
 const filesIn = (dir) =>
-  readdirSync(join(root, dir), { recursive: true, withFileTypes: true })
-    .filter((entry) => entry.isFile())
-    .map((entry) => relative(root, join(entry.parentPath, entry.name)).split('\\').join('/'));
+  existsSync(join(root, dir))
+    ? readdirSync(join(root, dir), { recursive: true, withFileTypes: true })
+        .filter((entry) => entry.isFile())
+        .map((entry) => relative(root, join(entry.parentPath, entry.name)).split('\\').join('/'))
+    : [];
 
 /** The resolved palette as plain data, for tools that want colours without a token pipeline. */
 function paletteData(palette, tokens) {

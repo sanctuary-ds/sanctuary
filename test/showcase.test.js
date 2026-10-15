@@ -58,6 +58,14 @@ test('the showcase offers exactly the window modes the palette publishes', () =>
   assert.deepEqual([...theme.options.window], Object.keys(data.windowModes));
 });
 
+test('every hero fact in the showcase has a count to show', () => {
+  const { theme } = loadTheme();
+  const counted = [...Object.keys(theme.options), 'tones'];
+  const facts = [...read('index.html').matchAll(/data-fact="([^"]+)"/g)].map((match) => match[1]);
+  assert.ok(facts.length > 0, 'no hero facts found');
+  for (const fact of facts) assert.ok(counted.includes(fact), `${fact} has no count`);
+});
+
 const saved = { flavor: 'vespers', accent: 'amber', glazing: 'flashed', window: 'harmonic' };
 
 test('a shared link previews its theme without replacing the saved one', () => {
