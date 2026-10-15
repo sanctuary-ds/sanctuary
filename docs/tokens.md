@@ -118,3 +118,5 @@ Glazing, cast, halo, state layers and the arch shapes are not in the token files
     "colors": { "surface": { "hex": "#0d111b", "oklch": [0.18, 0.022, 265] } } } },
   "pigments": { "cobalt": { "hue": 259, "tones": { "300": "#9bc1fb" } } } }
 ```
+
+It also lists the named windows (`windows`), the values of `data-san-window` (`windowModes`) and the glazings (`glazings`), each with a display name and a note, so a tool can offer the same choices as the stylesheet.

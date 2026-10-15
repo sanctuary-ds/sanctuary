@@ -120,6 +120,12 @@ export const WINDOWS = {
   vesperal: { name: 'Vesperal', stops: ['indigo', 'amethyst', 'rose'], note: 'The west window at sunset.' },
 };
 
+// Window modes: how the cast light follows the accent, set with data-san-window. Mono is the default.
+export const WINDOW_MODES = {
+  mono: { name: 'Mono', stops: 'one pigment', note: 'Pane, glass and lume of the current accent. The default.' },
+  harmonic: { name: 'Harmonic', stops: 'accent and neighbours', note: 'The accent leaded with the pigments on either side of it.' },
+};
+
 // The harmonic window is not a fixed set of stops: it leads an accent with its two
 // neighbours on the hue wheel, so the cast light always agrees with the controls.
 export function harmony(accent) {
@@ -189,6 +195,7 @@ export function buildPalette() {
     pigments: Object.fromEntries(Object.entries(PIGMENTS).map(([id, def]) => [id, ramp(def)])),
     flavors: Object.fromEntries(Object.entries(FLAVORS).map(([id, def]) => [id, { ...def, colors: stone(def) }])),
     windows: WINDOWS,
+    windowModes: WINDOW_MODES,
     glazings: GLAZINGS,
   };
 }

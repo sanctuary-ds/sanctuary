@@ -52,6 +52,12 @@ function blockEnd(css, start) {
   return css.length;
 }
 
+test('the showcase offers exactly the window modes the palette publishes', () => {
+  const { theme } = loadTheme();
+  const data = JSON.parse(readFileSync(new URL('../dist/palette.json', import.meta.url), 'utf8'));
+  assert.deepEqual([...theme.options.window], Object.keys(data.windowModes));
+});
+
 const saved = { flavor: 'vespers', accent: 'amber', glazing: 'flashed', window: 'harmonic' };
 
 test('a shared link previews its theme without replacing the saved one', () => {

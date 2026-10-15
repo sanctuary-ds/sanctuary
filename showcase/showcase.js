@@ -4,7 +4,7 @@
   const { state, options, apply } = window.SanctuaryTheme;
   const $ = (selector, scope = document) => scope.querySelector(selector);
   const $$ = (selector, scope = document) => [...scope.querySelectorAll(selector)];
-  const titles = { ...data.flavors, ...data.glazings, ...data.windows };
+  const titles = { ...data.flavors, ...data.glazings, ...data.windows, ...data.windowModes };
   const label = (id) => titles[id]?.name ?? id[0].toUpperCase() + id.slice(1);
 
   /* ---------- theme ---------- */
@@ -193,10 +193,7 @@
   }
 
   function renderWindows() {
-    const modes = {
-      mono: { name: 'Mono', stops: 'one pigment', note: 'Pane, glass and lume of the current accent. The default.' },
-      harmonic: { name: 'Harmonic', stops: 'accent and neighbours', note: 'The accent leaded with the pigments on either side of it.' },
-    };
+    const modes = data.windowModes;
     const glass = '<span class="glow"><span class="window__lead"><span class="window__glass"></span></span></span>';
     $('[data-render="windows"]').innerHTML = options.window
       .map((id) => `<button class="window" data-set="window:${id}" ${windowScope(id)}>

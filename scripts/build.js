@@ -39,7 +39,7 @@ function paletteData(palette, tokens) {
   for (const [id, ramp] of Object.entries(palette.pigments)) {
     pigments[id] = { ...PIGMENTS[id], tones: Object.fromEntries(TONES.map((tone) => [tone, ramp[tone].hex])) };
   }
-  return { defaultFlavor: DEFAULT_FLAVOR, flavors, pigments, windows: palette.windows, glazings: palette.glazings };
+  return { defaultFlavor: DEFAULT_FLAVOR, flavors, pigments, windows: palette.windows, windowModes: palette.windowModes, glazings: palette.glazings };
 }
 
 function outputs() {

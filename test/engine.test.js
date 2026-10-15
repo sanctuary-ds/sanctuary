@@ -121,6 +121,8 @@ test('the stylesheet exposes every flavor, accent, glazing and window switch', (
   for (const glazing of ['pot-metal', 'flashed', 'grisaille']) {
     assert.ok(css.includes(`[data-san-glazing="${glazing}"]`), glazing);
   }
+  // The window modes are public API too: pinned here, and published in the palette data.
+  assert.deepEqual(Object.keys(palette.windowModes), ['mono', 'harmonic']);
   for (const id of ['mono', 'harmonic']) assert.ok(css.includes(`[data-san-window="${id}"]`), id);
   // Named windows are fixed gradients to place by hand, not a theme-wide switch.
   for (const id of Object.keys(palette.windows)) {
@@ -137,6 +139,11 @@ test('the stylesheet exposes every flavor, accent, glazing and window switch', (
 test('a glazing declared in the palette without CSS fails the build instead of shipping silently', () => {
   const glazings = { ...palette.glazings, stained: { name: 'Stained', note: 'Not implemented.' } };
   assert.throws(() => emitCss({ ...palette, glazings }, tokens), /glazing "stained"/);
+});
+
+test('a window mode declared in the palette without CSS fails the build instead of shipping silently', () => {
+  const windowModes = { ...palette.windowModes, prism: { name: 'Prism', stops: 'every pigment', note: 'Not implemented.' } };
+  assert.throws(() => emitCss({ ...palette, windowModes }, tokens), /window mode "prism"/);
 });
 
 test('the harmonic window leads each accent with its two neighbours on the hue wheel', () => {
