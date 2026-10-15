@@ -1,5 +1,7 @@
 {
   "defaultFlavor": "compline",
+  "defaultGlazing": "pot-metal",
+  "defaultWindow": "mono",
   "flavors": {
     "lauds": {
       "name": "Lauds",
@@ -3957,6 +3959,68 @@
     "grisaille": {
       "name": "Grisaille",
       "note": "Monochrome glass with a coloured border. Accent as a line only."
+    }
+  },
+  "fonts": {
+    "display": {
+      "family": "Cormorant Garamond",
+      "fallbacks": [
+        "Cormorant",
+        "EB Garamond",
+        "Georgia"
+      ],
+      "generic": "serif",
+      "weights": [
+        500,
+        600
+      ],
+      "styles": [
+        "normal"
+      ]
+    },
+    "text": {
+      "family": "Hanken Grotesk",
+      "fallbacks": [
+        "Inter",
+        "system-ui"
+      ],
+      "generic": "sans-serif",
+      "weights": [
+        400,
+        500,
+        600
+      ],
+      "styles": [
+        "normal"
+      ]
+    },
+    "mono": {
+      "family": "JetBrains Mono",
+      "fallbacks": [
+        "Cascadia Code",
+        "ui-monospace"
+      ],
+      "generic": "monospace",
+      "weights": [
+        400
+      ],
+      "styles": [
+        "normal"
+      ]
+    },
+    "inscription": {
+      "family": "Cinzel",
+      "fallbacks": [
+        "Cormorant Garamond",
+        "Georgia"
+      ],
+      "generic": "serif",
+      "weights": [
+        600
+      ],
+      "styles": [
+        "normal"
+      ]
     }
   }
 }

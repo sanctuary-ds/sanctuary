@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { execFileSync, spawnSync } from 'node:child_process';
-import { cpSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
+import { cpSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -16,6 +16,7 @@ const palette = buildPalette();
 const tokens = buildTokens(palette);
 const flavorIds = Object.keys(FLAVORS);
 const pigmentIds = Object.keys(PIGMENTS);
+const data = JSON.parse(readFileSync(new URL('../dist/palette.json', import.meta.url), 'utf8'));
 
 test('oklch converts to the sRGB hex given in the DTCG colour module example', () => {
   assert.equal(oklchToHex([0.7016, 0.3225, 328.363]), '#ff00ff');
@@ -151,6 +152,32 @@ test('a field name keeps one type across the published palette tables', () => {
 test('a window mode declared in the palette without CSS fails the build instead of shipping silently', () => {
   const windowModes = { ...palette.windowModes, prism: { name: 'Prism', stops: 'every pigment', note: 'Not implemented.' } };
   assert.throws(() => emitCss({ ...palette, windowModes }, tokens), /window mode "prism"/);
+});
+
+test('the palette data names the default of every theme axis', () => {
+  // The defaults are public API: a consumer applies them before the user has chosen anything.
+  assert.equal(data.defaultFlavor, 'compline');
+  assert.equal(data.defaultGlazing, 'pot-metal');
+  assert.equal(data.defaultWindow, 'mono');
+  assert.ok(data.defaultGlazing in data.glazings);
+  assert.ok(data.defaultWindow in data.windowModes);
+});
+
+test('the palette data lists each font family with exactly the weights the type scale uses', () => {
+  const families = tokens.files['foundation/typography.tokens.json'].font.family;
+  const scale = tokens.files['foundation/typography.tokens.json'].type;
+  assert.deepEqual(Object.keys(data.fonts), Object.keys(families).filter((key) => !key.startsWith('$')));
+  for (const [id, font] of Object.entries(data.fonts)) {
+    const stack = families[id].$value;
+    assert.equal(font.family, stack[0], id);
+    assert.deepEqual(font.fallbacks, stack.slice(1, -1), id);
+    assert.equal(font.generic, stack.at(-1), id);
+    const used = Object.values(scale)
+      .filter((role) => role.$value?.fontFamily === `{font.family.${id}}`)
+      .map((role) => role.$value.fontWeight);
+    assert.deepEqual(font.weights, [...new Set(used)].sort((a, b) => a - b), id);
+    assert.deepEqual(font.styles, ['normal'], id);
+  }
 });
 
 test('the harmonic window leads each accent with its two neighbours on the hue wheel', () => {

@@ -1,7 +1,7 @@
 // Emits the token stylesheet: custom properties only, no element or component rules.
 
 import { archPolygon } from '../foundation.js';
-import { DEFAULT_FLAVOR, PIGMENTS, WINDOW_TONES, harmony } from '../palette.js';
+import { DEFAULT_FLAVOR, DEFAULT_GLAZING, DEFAULT_WINDOW, PIGMENTS, WINDOW_TONES, harmony } from '../palette.js';
 import { aliasPath, cssName, flatten } from '../tokens.js';
 
 const THEMING = ['data-san-flavor', 'data-san-accent', 'data-san-glazing', 'data-san-window'];
@@ -114,9 +114,9 @@ function derived(states) {
     ['--san-state-hover', `color-mix(in oklch, currentColor ${percent('hover')}%, transparent)`],
     ['--san-state-focus', `color-mix(in oklch, currentColor ${percent('focus')}%, transparent)`],
     ['--san-state-pressed', `color-mix(in oklch, currentColor ${percent('pressed')}%, transparent)`],
-    ...monoStops,
+    ...windowModeStops[DEFAULT_WINDOW],
     ['--san-window', windowGradient(['a', 'b', 'c'].map((stop) => `var(--san-window-${stop})`))],
-    ...glaze['pot-metal'],
+    ...glaze[DEFAULT_GLAZING],
   ];
 }
 
@@ -158,7 +158,7 @@ export function emitCss(palette, tokens) {
     out.push(block(scoped('data-san-accent', id), [...tokenEntries(files[`accent/${id}.tokens.json`]), ...harmonyStops(id)]));
   }
 
-  out.push('/* Light derived from the active flavor and accent. Pot-metal is the default glazing. */');
+  out.push(`/* Light derived from the active flavor and accent. ${palette.glazings[DEFAULT_GLAZING].name} is the default glazing. */`);
   out.push(block(ANY_SCOPE, derived(files['foundation/elevation.tokens.json'].state)));
   for (const id of Object.keys(palette.glazings)) {
     if (!glaze[id]) throw new Error(`No CSS is defined for glazing "${id}"; add it to the glaze table in src/emit/css.js.`);

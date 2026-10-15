@@ -25,8 +25,8 @@
   const state = {
     flavor,
     accent: pick('accent', data.flavors[flavor].accent),
-    glazing: pick('glazing', 'pot-metal'),
-    window: pick('window', 'mono'),
+    glazing: pick('glazing', data.defaultGlazing),
+    window: pick('window', data.defaultWindow),
   };
 
   function apply({ persist = true } = {}) {

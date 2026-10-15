@@ -66,6 +66,15 @@ test('every hero fact in the showcase has a count to show', () => {
   for (const fact of facts) assert.ok(counted.includes(fact), `${fact} has no count`);
 });
 
+test('the showcase loads exactly the fonts the palette data lists', () => {
+  const data = JSON.parse(readFileSync(new URL('../dist/palette.json', import.meta.url), 'utf8'));
+  const families = Object.values(data.fonts)
+    .map(({ family, weights }) => `family=${family.replaceAll(' ', '+')}:wght@${weights.join(';')}`)
+    .sort();
+  const expected = `https://fonts.googleapis.com/css2?${families.join('&')}&display=swap`;
+  assert.ok(read('index.html').includes(`href="${expected}"`), `index.html should load ${expected}`);
+});
+
 const saved = { flavor: 'vespers', accent: 'amber', glazing: 'flashed', window: 'harmonic' };
 
 test('a shared link previews its theme without replacing the saved one', () => {
