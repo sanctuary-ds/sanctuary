@@ -150,7 +150,7 @@ test('a field name keeps one type across the published palette tables', () => {
 });
 
 test('a window mode declared in the palette without CSS fails the build instead of shipping silently', () => {
-  const windowModes = { ...palette.windowModes, prism: { name: 'Prism', stops: 'every pigment', note: 'Not implemented.' } };
+  const windowModes = { ...palette.windowModes, prism: { name: 'Prism', source: 'every pigment', note: 'Not implemented.' } };
   assert.throws(() => emitCss({ ...palette, windowModes }, tokens), /window mode "prism"/);
 });
 

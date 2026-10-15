@@ -1,7 +1,7 @@
 // Renders the data-driven parts of the showcase and wires the theme controls.
 (function () {
   const data = window.SANCTUARY;
-  const { state, options, apply } = window.SanctuaryTheme;
+  const { state, options, apply, milliseconds } = window.SanctuaryTheme;
   const $ = (selector, scope = document) => scope.querySelector(selector);
   const $$ = (selector, scope = document) => [...scope.querySelectorAll(selector)];
   const titles = { ...data.flavors, ...data.glazings, ...data.windows, ...data.windowModes };
@@ -20,14 +20,9 @@
     sync();
   }
 
-  // The theme transition lasts as long as the motion token that drives it, in ms or s.
-  // Without the token there is no slow transition to wait for.
-  function procession() {
-    const value = getComputedStyle(document.documentElement).getPropertyValue('--san-duration-procession').trim();
-    const amount = parseFloat(value);
-    if (Number.isNaN(amount)) return 0;
-    return value.endsWith('ms') ? amount : amount * 1000;
-  }
+  // The theme transition lasts as long as the motion token that drives it.
+  const procession = () =>
+    milliseconds(getComputedStyle(document.documentElement).getPropertyValue('--san-duration-procession'));
 
   function sync() {
     for (const button of $$('[data-set]')) {
@@ -125,9 +120,10 @@
 
   // The hero counts what the palette ships, so it cannot drift from it.
   function renderFacts() {
-    const counts = Object.fromEntries(Object.entries(options).map(([axis, list]) => [axis, list.length]));
-    counts.tones = Object.keys(Object.values(data.pigments)[0].tones).length;
-    for (const node of $$('[data-fact]')) node.textContent = counts[node.dataset.fact];
+    // Each fact names the palette table it counts; tones are counted on one pigment's ramp.
+    const count = (fact) =>
+      Object.keys(fact === 'tones' ? Object.values(data.pigments)[0].tones : data[fact]).length;
+    for (const node of $$('[data-fact]')) node.textContent = count(node.dataset.fact);
     const modes = Object.values(data.windowModes).map(({ name }) => name.toLowerCase());
     $('[data-window-modes]').textContent = new Intl.ListFormat('en', { type: 'disjunction' }).format(modes);
   }

@@ -45,5 +45,13 @@
 
   // A shared link previews a look; only the visitor's own changes replace their saved theme.
   apply({ persist: !Object.keys(options).some((axis) => query.has(axis)) });
-  window.SanctuaryTheme = { state, options, apply };
+  // CSS durations are written in ms or s. Without a value there is no transition to wait for.
+  function milliseconds(value) {
+    const text = value.trim();
+    const amount = parseFloat(text);
+    if (Number.isNaN(amount)) return 0;
+    return text.endsWith('ms') ? amount : amount * 1000;
+  }
+
+  window.SanctuaryTheme = { state, options, apply, milliseconds };
 })();
