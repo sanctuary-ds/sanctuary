@@ -6,7 +6,7 @@ import { DEFAULT_FLAVOR, PIGMENTS, STATUS, SYNTAX, WINDOW_TONES } from './palett
 const GLASS_ROLES = ['$root', 'lume', 'ink', 'pane', 'on', 'on-pane'];
 
 /** Alias to a token; a bare group name points at that group's `$root` token. */
-const ref = (path, role = '$root') => `{${path}${role === '$root' ? '.$root' : `.${role}`}}`;
+const ref = (path, role = '$root') => `{${path}.${role}}`;
 
 function dtcgColor({ oklch, hex, alpha }) {
   return { colorSpace: 'oklch', components: oklch, ...(alpha === undefined ? {} : { alpha }), hex };

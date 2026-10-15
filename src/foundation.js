@@ -23,7 +23,8 @@ const size = {
 
 const breakpoint = group('dimension', { sm: 40, md: 48, lg: 64, xl: 80, '2xl': 96 }, rem);
 
-// Cut stone: radii stay small. Roundness is reserved for the arch shapes.
+// Cut stone: radii stay small, and arches use the shape tokens. `full` (9999px) is the exception:
+// a pill or circle for small controls such as switches, chips and progress tracks.
 const radius = group('dimension', { none: 0, xs: 0.125, sm: 0.25, md: 0.5, lg: 0.75, xl: 1.25, full: 624.9375 }, rem);
 
 const border = {
