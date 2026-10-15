@@ -3936,12 +3936,12 @@
   "windowModes": {
     "mono": {
       "name": "Mono",
-      "stops": "one pigment",
+      "source": "one pigment",
       "note": "Pane, glass and lume of the current accent. The default."
     },
     "harmonic": {
       "name": "Harmonic",
-      "stops": "accent and neighbours",
+      "source": "accent and neighbours",
       "note": "The accent leaded with the pigments on either side of it."
     }
   },

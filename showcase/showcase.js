@@ -128,6 +128,8 @@
     const counts = Object.fromEntries(Object.entries(options).map(([axis, list]) => [axis, list.length]));
     counts.tones = Object.keys(Object.values(data.pigments)[0].tones).length;
     for (const node of $$('[data-fact]')) node.textContent = counts[node.dataset.fact];
+    const modes = Object.values(data.windowModes).map(({ name }) => name.toLowerCase());
+    $('[data-window-modes]').textContent = new Intl.ListFormat('en', { type: 'disjunction' }).format(modes);
   }
 
   function renderFlavors() {
@@ -202,7 +204,7 @@
     const glass = '<span class="glow"><span class="window__lead"><span class="window__glass"></span></span></span>';
     $('[data-render="windows"]').innerHTML = options.window
       .map((id) => `<button class="window" data-set="window:${id}" ${windowScope(id)}>
-          ${glass}<b>${modes[id].name}</b><span>${modes[id].stops}</span><small>${modes[id].note}</small>
+          ${glass}<b>${modes[id].name}</b><span>${modes[id].source}</span><small>${modes[id].note}</small>
         </button>`)
       .join('');
     // Named windows are fixed gradients, shown here as they would be placed by hand.

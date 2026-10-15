@@ -140,6 +140,14 @@ test('a glazing declared in the palette without CSS fails the build instead of s
   assert.throws(() => emitCss({ ...palette, glazings }, tokens), /glazing "stained"/);
 });
 
+test('a field name keeps one type across the published palette tables', () => {
+  for (const window of Object.values(palette.windows)) assert.ok(Array.isArray(window.stops));
+  for (const [id, mode] of Object.entries(palette.windowModes)) {
+    assert.equal(mode.stops, undefined, `${id} describes its light in source, not stops`);
+    assert.equal(typeof mode.source, 'string', id);
+  }
+});
+
 test('a window mode declared in the palette without CSS fails the build instead of shipping silently', () => {
   const windowModes = { ...palette.windowModes, prism: { name: 'Prism', stops: 'every pigment', note: 'Not implemented.' } };
   assert.throws(() => emitCss({ ...palette, windowModes }, tokens), /window mode "prism"/);
@@ -200,10 +208,13 @@ test('the build check fails on a generated file that the sources no longer produ
   const copy = mkdtempSync(join(tmpdir(), 'sanctuary-check-'));
   try {
     for (const dir of ['scripts', 'src', 'tokens', 'ports', 'dist', 'showcase']) cpSync(join(repo, dir), join(copy, dir), { recursive: true });
+    cpSync(join(repo, 'package.json'), join(copy, 'package.json'));
     writeFileSync(join(copy, 'ports/kitty/sanctuary-old.conf'), '# left behind by a renamed flavor\n');
+    writeFileSync(join(copy, 'ports/kitty/.DS_Store'), '');
     const result = spawnSync(process.execPath, [join(copy, 'scripts/build.js'), '--check'], { encoding: 'utf8' });
     assert.equal(result.status, 1);
     assert.match(result.stderr, /ports\/kitty\/sanctuary-old\.conf/);
+    assert.doesNotMatch(result.stderr, /\.DS_Store/, 'hidden files are not build output');
   } finally {
     rmSync(copy, { recursive: true, force: true });
   }

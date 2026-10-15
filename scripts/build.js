@@ -15,6 +15,7 @@ const json = (value) => `${JSON.stringify(value, null, 2)}\n`;
 
 // Directories whose every file is generated, so anything else in them is left over. Only
 // `--check` reports leftovers: the build itself never deletes files it did not write.
+// Hidden files such as .DS_Store belong to the operating system or an editor, not the build.
 const GENERATED_DIRS = ['tokens', 'ports', 'dist'];
 
 const filesIn = (dir) =>
@@ -22,6 +23,7 @@ const filesIn = (dir) =>
     ? readdirSync(join(root, dir), { recursive: true, withFileTypes: true })
         .filter((entry) => entry.isFile())
         .map((entry) => relative(root, join(entry.parentPath, entry.name)).split('\\').join('/'))
+        .filter((file) => !file.split('/').some((segment) => segment.startsWith('.')))
     : [];
 
 /** The resolved palette as plain data, for tools that want colours without a token pipeline. */
@@ -78,7 +80,7 @@ for (const [file, content] of Object.entries(files)) {
   }
 }
 
-const orphans = check ? GENERATED_DIRS.flatMap(filesIn).filter((file) => !(file in files)) : [];
+const orphans = check ? GENERATED_DIRS.flatMap(filesIn).filter((file) => !(file in files)).sort() : [];
 const list = (paths) => paths.map((file) => `  ${file}`).join('\n');
 if (stale.length > 0) console.error(`Stale generated files, run \`pnpm run build\`:\n${list(stale)}`);
 if (orphans.length > 0) console.error(`Generated files the sources no longer produce, delete them:\n${list(orphans)}`);

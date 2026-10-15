@@ -122,8 +122,8 @@ export const WINDOWS = {
 
 // Window modes: how the cast light follows the accent, set with data-san-window. Mono is the default.
 export const WINDOW_MODES = {
-  mono: { name: 'Mono', stops: 'one pigment', note: 'Pane, glass and lume of the current accent. The default.' },
-  harmonic: { name: 'Harmonic', stops: 'accent and neighbours', note: 'The accent leaded with the pigments on either side of it.' },
+  mono: { name: 'Mono', source: 'one pigment', note: 'Pane, glass and lume of the current accent. The default.' },
+  harmonic: { name: 'Harmonic', source: 'accent and neighbours', note: 'The accent leaded with the pigments on either side of it.' },
 };
 
 // The harmonic window is not a fixed set of stops: it leads an accent with its two
