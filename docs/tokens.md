@@ -66,6 +66,7 @@ These are computed from the active flavor, accent, glazing and window setting.
 | Property | Type | Use |
 |----------|------|-----|
 | `--san-glaze-bg`, `-bg-hover`, `-fg`, `-border` | color | A glazed (accent-filled) element |
+| `--san-light` | color | White light as it passes clear glass; draw sheens, suns and highlights with it, mixed toward `transparent` for strength |
 | `--san-glaze-sheen` | image | Highlight layered over `-bg` |
 | `--san-glaze-glow` | shadow | Glow of the glazing |
 | `--san-glaze-blur` | filter | `backdrop-filter` value |
@@ -90,13 +91,17 @@ These are computed from the active flavor, accent, glazing and window setting.
 | Shape | `--san-shape-lancet`, `--san-shape-ogive` | `clip-path` values, CSS only |
 | Font | `--san-font-family-display/text/mono/inscription`, `--san-font-weight-regular/medium/semibold/bold` | |
 | Type | `--san-type-<role>` and `--san-type-<role>-tracking` | `font` shorthand plus letter spacing |
-| Duration | `--san-duration-instant/fast/base/slow/slower/procession` | 80 to 900ms |
+| Duration | `--san-duration-instant/fast/base/slow/slower/procession` | 80 to 900ms; all `0ms` under `prefers-reduced-motion: reduce` |
 | Easing | `--san-ease-standard/enter/exit/linear` | |
 | Blur | `--san-blur-sm/md/lg` | For glass surfaces |
 | State | `--san-state-disabled-content`, `-disabled-container` | Opacities |
 | Layer | `--san-layer-base/raised/sticky/overlay/modal/toast/tooltip` | `z-index` |
 
 Type roles: `display-lg/md/sm`, `headline-lg/md/sm`, `title-lg/md/sm`, `body-lg/md/sm`, `label-lg/md/sm`, `inscription`, `code-md/sm`.
+
+### Reduced motion
+
+When the visitor asks for reduced motion (`prefers-reduced-motion: reduce`), the stylesheet sets every `--san-duration-*` token to `0ms`, so anything timed with the tokens changes instantly. A zero-length transition does not start, so it fires no `transitionend` event; code that waits for one should check the duration first. Animations or durations written without the tokens are not covered.
 
 ## Using the DTCG files
 
