@@ -34,6 +34,8 @@ Any element can carry these attributes, so a card can sit in another flavor or a
 | `ports/` | Themes for kitty, Ghostty, Alacritty, base16, GTK CSS (Waybar) and Hyprland | No, generated |
 | `docs/` | Design language, architecture, token reference, ecosystem plan | Yes |
 
+The npm package, `@sanctuary-ds/tokens`, contains only `dist/` and `tokens/`, with this README and the license; a test keeps it that way.
+
 ## Commands
 
 | Command | Result |
