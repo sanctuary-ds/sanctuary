@@ -16,9 +16,19 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # Full history, so the tagged commit can be checked against main.
+          fetch-depth: 0
+      # Installs the pnpm from packageManager and the Node.js from devEngines.runtime, then runs pnpm install.
       - uses: pnpm/setup@a0881977cd8ea73b1ed212236c99ca10dcc80cf4 # v3.1.1
         with:
           require-lockfile: true
+      - name: Check that the tagged commit is on main
+        run: |
+          if ! git merge-base --is-ancestor "$GITHUB_SHA" origin/main; then
+            echo "Tag $GITHUB_REF_NAME points at a commit that is not on main" >&2
+            exit 1
+          fi
       # Includes the package contents test, which needs pnpm.
       - run: pnpm test
       - name: Check that generated files match the sources
@@ -34,6 +44,8 @@ jobs:
   publish:
     name: Publish to npm
     needs: verify
+    # The npm environment requires a maintainer's approval, and the npm trusted publisher only accepts runs from it.
+    environment: npm
     runs-on: ubuntu-latest
     timeout-minutes: 10
     # Trusted publishing: npm exchanges this OIDC token for a one-time credential,
@@ -42,8 +54,11 @@ jobs:
       contents: read
       id-token: write
     steps:
+      # Publish exactly the commit the verify job tested, even if the tag moved since.
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      # Node 24 ships npm 11.19, above the 11.5.1 that trusted publishing requires.
+        with:
+          ref: ${{ github.sha }}
+      # Trusted publishing needs npm 11.5.1 or later (docs.npmjs.com/trusted-publishers); the npm bundled with Node 24 meets it.
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: 24

@@ -209,7 +209,8 @@ test('white light is a token, and the glass sheen is drawn with it', () => {
 });
 
 test('the npm package ships only the stylesheet, the palette and the token files', (t) => {
-  // pnpm sets npm_execpath for the scripts it runs; a bare `node --test` cannot pack.
+  // pnpm sets npm_execpath for the scripts it runs; a bare `node --test` cannot pack, so it skips.
+  // CI and the release workflow run `pnpm test`, where this check always runs.
   const pnpm = process.env.npm_execpath;
   if (!pnpm || !/pnpm/.test(pnpm)) return t.skip('run through pnpm to check the package contents');
   const [command, args] = /\.c?js$/.test(pnpm)
@@ -217,7 +218,10 @@ test('the npm package ships only the stylesheet, the palette and the token files
     : [pnpm, ['pack', '--dry-run', '--json']];
   const result = spawnSync(command, args, { cwd: fileURLToPath(new URL('..', import.meta.url)), encoding: 'utf8' });
   assert.equal(result.status, 0, result.stderr);
-  const { files } = JSON.parse(result.stdout.slice(result.stdout.indexOf('{')));
+  // pnpm may print lifecycle output before the JSON result, so parse from its first brace.
+  const start = result.stdout.indexOf('{');
+  assert.ok(start >= 0, `pnpm pack printed no JSON:\n${result.stdout}`);
+  const { files } = JSON.parse(result.stdout.slice(start));
   const roots = [...new Set(files.map(({ path }) => path.split('/')[0]))].sort();
   assert.deepEqual(roots, ['LICENSE', 'README.md', 'dist', 'package.json', 'tokens']);
 });

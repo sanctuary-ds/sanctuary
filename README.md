@@ -76,8 +76,11 @@ Releases are published to npm by `.github/workflows/release.yml` with npm truste
 
 1. Raise `version` in `package.json` in a pull request and merge it.
 2. Tag the merge commit with the same version, for example `git tag -s v0.1.1 && git push origin v0.1.1`.
+3. Approve the `npm` deployment in the workflow run.
 
-The workflow runs the tests, checks that the tag matches the version, and publishes with provenance.
+The workflow runs the tests, checks that the tagged commit is on `main` and that the tag matches the version, waits for the approval, and publishes with provenance.
+
+A published version can never be replaced on npm. If one is wrong, release a fixed patch version and mark the bad one with `npm deprecate @sanctuary-ds/tokens@<version> "<reason>"`.
 
 ## Read next
 
