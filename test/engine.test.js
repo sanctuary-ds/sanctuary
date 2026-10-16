@@ -244,7 +244,7 @@ test('the build check fails on a generated file that the sources no longer produ
   const repo = fileURLToPath(new URL('..', import.meta.url));
   const copy = mkdtempSync(join(tmpdir(), 'sanctuary-check-'));
   try {
-    for (const dir of ['scripts', 'src', 'tokens', 'ports', 'dist', 'showcase']) cpSync(join(repo, dir), join(copy, dir), { recursive: true });
+    for (const dir of ['scripts', 'src', 'tokens', 'ports', 'dist']) cpSync(join(repo, dir), join(copy, dir), { recursive: true });
     cpSync(join(repo, 'package.json'), join(copy, 'package.json'));
     writeFileSync(join(copy, 'ports/kitty/sanctuary-old.conf'), '# left behind by a renamed flavor\n');
     writeFileSync(join(copy, 'ports/kitty/.DS_Store'), '');

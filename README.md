@@ -4,11 +4,9 @@ A design system of stone, glass, lead and light: the chiaroscuro of a Gothic nav
 
 ## Quick path
 
-1. Open `showcase/index.html` in a browser (no server or build needed).
-2. Switch **flavor**, **accent** and **glazing** in the header, or press `F`, `A`, `G`. `W` toggles the window setting.
+1. Try every axis live in the [playground](https://sanctuary-ds.github.io/playground/) and share a look as a link, for example [Lauds with ruby, flashed glass and a harmonic window](https://sanctuary-ds.github.io/playground/?flavor=lauds&accent=ruby&glazing=flashed&window=harmonic).
+2. Use the stylesheet in your own page with the attributes below.
 3. To change the system, edit `src/`, then run `pnpm run build` and `pnpm test`.
-
-Share a specific look with a query string: `showcase/index.html?flavor=lauds&accent=ruby&glazing=flashed&window=harmonic`.
 
 ## The three axes
 
@@ -34,14 +32,13 @@ Any element can carry these attributes, so a card can sit in another flavor or a
 | `tokens/` | DTCG 2025.10 token files and a resolver document | No, generated |
 | `dist/` | `css/sanctuary.css` (custom properties) and `palette.json` | No, generated |
 | `ports/` | Themes for kitty, Ghostty, Alacritty, base16, GTK CSS (Waybar) and Hyprland | No, generated |
-| `showcase/` | The interactive preview | Yes, except `palette.js` |
 | `docs/` | Design language, architecture, token reference, ecosystem plan | Yes |
 
 ## Commands
 
 | Command | Result |
 |---------|--------|
-| `pnpm run build` | Regenerates `tokens/`, `dist/`, `ports/` and `showcase/palette.js` |
+| `pnpm run build` | Regenerates `tokens/`, `dist/` and `ports/` |
 | `pnpm run check` | Fails if any generated file is stale |
 | `pnpm test` | Color maths, WCAG AA contrast for every flavor, DTCG validity, cascade order, ports |
 
@@ -60,4 +57,4 @@ There are no dependencies. The tools run on Node 22 or later; development uses N
 
 ## License
 
-[MIT](LICENSE). The fonts used by the showcase are not part of Sanctuary and keep their own licenses.
+[MIT](LICENSE). Sanctuary names its fonts but does not ship them; each font keeps its own license.

@@ -10,7 +10,7 @@ src/foundation.js ├─► src/tokens.js ─► tokens/*.tokens.json   (DTCG 20
 src/color.js      ─┘        │         ─► tokens/sanctuary.resolver.json
                             ├─► src/emit/css.js   ─► dist/css/sanctuary.css
                             ├─► src/emit/ports.js ─► ports/<app>/sanctuary-<flavor>.*
-                            └─► scripts/build.js  ─► dist/palette.json, showcase/palette.js
+                            └─► scripts/build.js  ─► dist/palette.json
 ```
 
 `pnpm run build` writes all of it. `pnpm run check` (also run by the test suite) fails when a generated file is stale.
@@ -73,12 +73,12 @@ Known limit: when the *same* axis is nested twice with a different axis in betwe
 | Accent model | Tonal ramps plus per-flavor role mapping | Guarantees contrast for any accent in any flavor | Less hand-tuned per flavor than a curated palette |
 | Glazing | A separate axis, CSS only | Keeps the accent a pure color choice; needs `color-mix()` | Not portable through DTCG; ports receive solid colors |
 | Window | A setting derived from the accent (`mono`, `harmonic`), not an axis | A window independent of the accent made cast light compete with the controls; ports ignore it anyway | A whole theme cannot be recolored against its accent with one attribute; the five named windows remain as fixed gradients to place by hand |
-| Generated files | Committed | Ports are consumed straight from the repository, and the showcase opens without a build | Diffs include generated output; `npm run check` guards drift |
+| Generated files | Committed | Ports are consumed straight from the repository, and consumers can pin a commit without a build step | Diffs include generated output; `npm run check` guards drift |
 | Prefix | `san` (`--san-*`, `data-san-*`, future `<san-button>`) | Short and unlikely to collide | None known |
 
 ## Browser support
 
-The stylesheet relies on `oklch()`, `color-mix()` and `:is()`, all widely available since 2023. The showcase additionally uses `clip-path: polygon()`, container query units and `backdrop-filter`.
+The stylesheet relies on `oklch()`, `color-mix()` and `:is()`, all widely available since 2023.
 
 ## Testing
 
