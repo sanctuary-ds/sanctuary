@@ -277,7 +277,7 @@
   },
   "state": {
     "$type": "number",
-    "$description": "Opacity of the content colour laid over a control in each interaction state.",
+    "$description": "Opacity of the content color laid over a control in each interaction state.",
     "hover": {
       "$value": 0.08
     },

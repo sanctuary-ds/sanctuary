@@ -18,7 +18,7 @@ const flavorIds = Object.keys(FLAVORS);
 const pigmentIds = Object.keys(PIGMENTS);
 const data = JSON.parse(readFileSync(new URL('../dist/palette.json', import.meta.url), 'utf8'));
 
-test('oklch converts to the sRGB hex given in the DTCG colour module example', () => {
+test('oklch converts to the sRGB hex given in the DTCG color module example', () => {
   assert.equal(oklchToHex([0.7016, 0.3225, 328.363]), '#ff00ff');
 });
 
@@ -40,7 +40,7 @@ test('every pigment has a full ramp of in-gamut, strictly darkening tones', () =
     let previous = 2;
     for (const tone of TONES) {
       assert.match(ramp[tone].hex, /^#[0-9a-f]{6}$/);
-      // Gamut mapping must not have clipped: the hex has to decode to the same colour.
+      // Gamut mapping must not have clipped: the hex has to decode to the same color.
       const [l, c, h] = hexToOklch(ramp[tone].hex);
       const [expectedL, expectedC, expectedH] = ramp[tone].oklch;
       assert.ok(Math.abs(l - expectedL) < 0.006, `${id}.${tone} lightness clipped`);
@@ -257,7 +257,7 @@ test('the default flavor is declared first so that any flavor attribute on the r
   }
 });
 
-test('every port ships one theme per flavor with sixteen ANSI colours', () => {
+test('every port ships one theme per flavor with sixteen ANSI colors', () => {
   const ports = emitPorts(palette, tokens);
   for (const app of ['kitty', 'ghostty', 'alacritty', 'base16', 'gtk', 'hyprland']) {
     const files = Object.keys(ports).filter((file) => file.startsWith(`${app}/`));
