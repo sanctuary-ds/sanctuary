@@ -8,6 +8,30 @@ A design system of stone, glass, lead and light: the chiaroscuro of a Gothic nav
 2. Use the stylesheet in your own page with the attributes below.
 3. To change the system, edit `src/`, then run `pnpm run build` and `pnpm test`.
 
+## Install
+
+```sh
+pnpm add @sanctuary-ds/tokens
+```
+
+With a bundler (Vite, Astro, webpack), import the stylesheet once:
+
+```js
+import '@sanctuary-ds/tokens/css';
+```
+
+Without a build step, link it from a CDN that serves npm packages:
+
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sanctuary-ds/tokens@0.1/dist/css/sanctuary.css">
+```
+
+The resolved colors are also available as data, and the DTCG files under `tokens/` for design tools and token pipelines:
+
+```js
+import palette from '@sanctuary-ds/tokens/palette' with { type: 'json' };
+```
+
 ## The three axes
 
 | Axis | Values | What it changes |
@@ -34,6 +58,8 @@ Any element can carry these attributes, so a card can sit in another flavor or a
 | `ports/` | Themes for kitty, Ghostty, Alacritty, base16, GTK CSS (Waybar) and Hyprland | No, generated |
 | `docs/` | Design language, architecture, token reference, ecosystem plan | Yes |
 
+The npm package, `@sanctuary-ds/tokens`, contains only `dist/` and `tokens/`, with this README and the license; a test keeps it that way.
+
 ## Commands
 
 | Command | Result |
@@ -43,6 +69,18 @@ Any element can carry these attributes, so a card can sit in another flavor or a
 | `pnpm test` | Color maths, WCAG AA contrast for every flavor, DTCG validity, cascade order, ports |
 
 There are no dependencies. The tools run on Node 22 or later; development uses Node 24, which pnpm downloads for the project when it is missing (`devEngines.runtime` in `package.json`).
+
+## Releasing
+
+Releases are published to npm by `.github/workflows/release.yml` with npm trusted publishing, so no npm token is stored anywhere. To release:
+
+1. Raise `version` in `package.json` in a pull request and merge it.
+2. Tag the merge commit with the same version, for example `git tag -s v0.1.1 && git push origin v0.1.1`.
+3. Approve the `npm` deployment in the workflow run.
+
+The workflow runs the tests, checks that the tagged commit is on `main` and that the tag matches the version, waits for the approval, and publishes with provenance.
+
+A published version can never be replaced on npm. If one is wrong, release a fixed patch version and mark the bad one with `npm deprecate @sanctuary-ds/tokens@<version> "<reason>"`.
 
 ## Read next
 

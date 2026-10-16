@@ -1,9 +1,27 @@
 {
   "name": "@sanctuary-ds/tokens",
   "version": "0.1.0",
-  "private": true,
   "description": "Sanctuary: a design system of stone, glass and light.",
   "license": "MIT",
+  "keywords": [
+    "design-system",
+    "design-tokens",
+    "dtcg",
+    "oklch",
+    "css-custom-properties",
+    "color-palette",
+    "dark-theme",
+    "theme",
+    "ricing"
+  ],
+  "homepage": "https://sanctuary-ds.github.io/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sanctuary-ds/tokens.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sanctuary-ds/tokens/issues"
+  },
   "type": "module",
   "packageManager": "pnpm@12.8.1",
   "engines": {
@@ -24,6 +42,14 @@
   "exports": {
     "./css": "./dist/css/sanctuary.css",
     "./palette": "./dist/palette.json",
-    "./tokens/*": "./tokens/*"
+    "./tokens/*": "./tokens/*",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "tokens"
+  ],
+  "publishConfig": {
+    "access": "public"
   }
 }
