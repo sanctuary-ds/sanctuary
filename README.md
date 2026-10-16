@@ -8,6 +8,30 @@ A design system of stone, glass, lead and light: the chiaroscuro of a Gothic nav
 2. Use the stylesheet in your own page with the attributes below.
 3. To change the system, edit `src/`, then run `pnpm run build` and `pnpm test`.
 
+## Install
+
+```sh
+pnpm add @sanctuary-ds/tokens
+```
+
+With a bundler (Vite, Astro, webpack), import the stylesheet once:
+
+```js
+import '@sanctuary-ds/tokens/css';
+```
+
+Without a build step, link it from a CDN that serves npm packages:
+
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sanctuary-ds/tokens@0.1/dist/css/sanctuary.css">
+```
+
+The resolved colors are also available as data, and the DTCG files under `tokens/` for design tools and token pipelines:
+
+```js
+import palette from '@sanctuary-ds/tokens/palette' with { type: 'json' };
+```
+
 ## The three axes
 
 | Axis | Values | What it changes |
@@ -45,6 +69,15 @@ The npm package, `@sanctuary-ds/tokens`, contains only `dist/` and `tokens/`, wi
 | `pnpm test` | Color maths, WCAG AA contrast for every flavor, DTCG validity, cascade order, ports |
 
 There are no dependencies. The tools run on Node 22 or later; development uses Node 24, which pnpm downloads for the project when it is missing (`devEngines.runtime` in `package.json`).
+
+## Releasing
+
+Releases are published to npm by `.github/workflows/release.yml` with npm trusted publishing, so no npm token is stored anywhere. To release:
+
+1. Raise `version` in `package.json` in a pull request and merge it.
+2. Tag the merge commit with the same version, for example `git tag -s v0.1.1 && git push origin v0.1.1`.
+
+The workflow runs the tests, checks that the tag matches the version, and publishes with provenance.
 
 ## Read next
 

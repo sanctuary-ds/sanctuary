@@ -1,0 +1,50 @@
+name: Release
+
+# Publishes @sanctuary-ds/tokens to npm when a version tag such as v0.1.1 is pushed.
+# Nothing else triggers it: pushes and merges to main never publish.
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Verify the release
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: pnpm/setup@a0881977cd8ea73b1ed212236c99ca10dcc80cf4 # v3.1.1
+        with:
+          require-lockfile: true
+      # Includes the package contents test, which needs pnpm.
+      - run: pnpm test
+      - name: Check that generated files match the sources
+        run: pnpm run check
+      - name: Check that the tag matches the package version
+        run: |
+          version="v$(node -p "require('./package.json').version")"
+          if [ "$GITHUB_REF_NAME" != "$version" ]; then
+            echo "Tag $GITHUB_REF_NAME does not match package.json $version" >&2
+            exit 1
+          fi
+
+  publish:
+    name: Publish to npm
+    needs: verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    # Trusted publishing: npm exchanges this OIDC token for a one-time credential,
+    # so no npm token is stored in the repository. Provenance is generated automatically.
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      # Node 24 ships npm 11.19, above the 11.5.1 that trusted publishing requires.
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+      - run: npm publish
