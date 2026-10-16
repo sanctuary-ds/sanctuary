@@ -1132,3 +1132,15 @@
   --san-window-b: var(--san-harmony-b);
   --san-window-c: var(--san-harmony-c);
 }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --san-duration-instant: 0ms;
+    --san-duration-fast: 0ms;
+    --san-duration-base: 0ms;
+    --san-duration-slow: 0ms;
+    --san-duration-slower: 0ms;
+    --san-duration-procession: 0ms;
+  }
+}

@@ -137,7 +137,7 @@ Blackletter is deliberately absent. The system is about the atmosphere of the bu
 
 ## Motion
 
-Two speeds. Controls respond fast (`fast` 140ms, `base` 220ms). Light moves slowly: changes of flavor, accent or glow use `procession` (900ms), like a cloud passing a window. Respect `prefers-reduced-motion` by removing both.
+Two speeds. Controls respond fast (`fast` 140ms, `base` 220ms). Light moves slowly: changes of flavor, accent or glow use `procession` (900ms), like a cloud passing a window. Under `prefers-reduced-motion` both are removed: the stylesheet sets every duration token to zero.
 
 ## What Sanctuary is not
 

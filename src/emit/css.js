@@ -170,5 +170,13 @@ export function emitCss(palette, tokens) {
     if (!windowModeStops[id]) throw new Error(`No CSS is defined for window mode "${id}"; add it to the window mode table in src/emit/css.js.`);
     out.push(block(scoped('data-san-window', id), windowModeStops[id]));
   }
+  // Motion is decoration: under reduced motion every duration collapses, so whatever the tokens time stops moving.
+  const durations = flatten(files['foundation/motion.tokens.json']).filter(({ type }) => type === 'duration');
+  out.push('/* Reduced motion */');
+  out.push(`@media (prefers-reduced-motion: reduce) {\n${block(':root', durations.map(({ path }) => [cssName(path), '0ms']))
+    .trimEnd()
+    .split('\n')
+    .map((line) => (line ? `  ${line}` : line))
+    .join('\n')}\n}\n`);
   return out.join('\n');
 }
