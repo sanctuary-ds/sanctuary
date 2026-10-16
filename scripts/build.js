@@ -87,8 +87,6 @@ function outputs() {
   for (const [file, content] of Object.entries(emitPorts(palette, tokens))) files[`ports/${file}`] = content;
   files['dist/css/sanctuary.css'] = emitCss(palette, tokens);
   files['dist/palette.json'] = json(data);
-  // A classic script so the showcase also works when opened straight from the file system.
-  files['showcase/palette.js'] = `window.SANCTUARY = ${JSON.stringify(data)};\n`;
   return files;
 }
 
