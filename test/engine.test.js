@@ -200,6 +200,14 @@ test('under reduced motion every duration token collapses to zero', () => {
   for (const name of durations) assert.match(reduced, new RegExp(`${name}: 0ms;`), name);
 });
 
+test('white light is a token, and the glass sheen is drawn with it', () => {
+  const css = emitCss(palette, tokens);
+  assert.match(css, /--san-light: oklch\(1 0 0\);/);
+  const sheen = css.match(/--san-glaze-sheen: ([^;]+);/)[1];
+  assert.ok(sheen.includes('var(--san-light)'), sheen);
+  assert.ok(!/oklch\(1 0 0 \//.test(css), 'white light written as a literal');
+});
+
 test('the harmonic window leads each accent with its two neighbours on the hue wheel', () => {
   assert.deepEqual(harmony('cobalt'), ['azure', 'cobalt', 'indigo']);
   // The wheel is circular: rose (3°) sits between murrey (342°) and ruby (24°).

@@ -66,6 +66,7 @@ These are computed from the active flavor, accent, glazing and window setting.
 | Property | Type | Use |
 |----------|------|-----|
 | `--san-glaze-bg`, `-bg-hover`, `-fg`, `-border` | color | A glazed (accent-filled) element |
+| `--san-light` | color | White light as it passes clear glass; draw sheens, suns and highlights with it, mixed toward `transparent` for strength |
 | `--san-glaze-sheen` | image | Highlight layered over `-bg` |
 | `--san-glaze-glow` | shadow | Glow of the glazing |
 | `--san-glaze-blur` | filter | `backdrop-filter` value |
