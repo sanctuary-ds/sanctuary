@@ -7,10 +7,12 @@ This repository is the seed of the [`sanctuary-ds`](https://github.com/sanctuary
 | Repository | Contents | Depends on | Status |
 |------------|----------|-----------|--------|
 | `sanctuary` (this one) | Token engine, DTCG tokens, stylesheet, palette and their technical docs; for now also the showcase, the design language and the first ports | Nothing | Active, not yet on npm |
-| [`sanctuary-ds.github.io`](https://github.com/sanctuary-ds/sanctuary-ds.github.io) | Public site: home, playground, documentation; see its [roadmap](https://github.com/sanctuary-ds/sanctuary-ds.github.io/blob/main/ROADMAP.md) | `sanctuary`, later `elements` | In progress |
+| [`sanctuary-ds.github.io`](https://github.com/sanctuary-ds/sanctuary-ds.github.io) | Public site: home, playground, documentation; see its [roadmap](https://github.com/sanctuary-ds/sanctuary-ds.github.io/blob/main/ROADMAP.md) | `sanctuary`, later `web-components` | In progress |
 | [`.github`](https://github.com/sanctuary-ds/.github) | Organization profile, contributing guide, security policy, brand mark | Nothing | Active |
-| `elements` | The Lit web component library (`<san-button>`, ...) | `sanctuary` tokens | Planned |
+| `web-components` | Sanctuary Web Components: the Lit library (`<san-button>`, ...), published as `@sanctuary-ds/web-components` | `sanctuary` tokens | Planned |
 | One repository per port | A theme for one application, with its templates | `palette.json` | Planned |
+
+Repositories are named after what they ship, and a platform-specific library carries its platform in its name, so a future Flutter library would live in its own `flutter` repository and generate its theme from `palette.json`. This repository will be renamed `tokens`, to match `@sanctuary-ds/tokens`, once the showcase has moved to the site and before the first npm release; GitHub redirects the old name. There is no separate umbrella repository: the organization profile and the site play that role, joined by organization discussions once they are enabled.
 
 Each repository has a `ROADMAP.md` with its scope, phases and its contract with this one. Decisions that cross repositories are taken here first and recorded on this page; the other repositories then update their roadmap and their pinned version of the tokens.
 
