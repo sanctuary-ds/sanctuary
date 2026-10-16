@@ -100,7 +100,7 @@ const ease = group('cubicBezier', {
   linear: [0, 0, 1, 1],
 });
 
-// Lumen levels. Each level pairs a key shadow with an ambient one; colours come from the flavor.
+// Lumen levels. Each level pairs a key shadow with an ambient one; colors come from the flavor.
 const LUMEN = [
   [[0, 0, 0], [0, 0, 0]],
   [[1, 2, 0], [1, 3, 1]],
@@ -127,7 +127,7 @@ const blur = group('dimension', { sm: 8, md: 16, lg: 32 }, px);
 
 const state = {
   $type: 'number',
-  $description: 'Opacity of the content colour laid over a control in each interaction state.',
+  $description: 'Opacity of the content color laid over a control in each interaction state.',
   hover: { $value: 0.08 },
   focus: { $value: 0.12 },
   pressed: { $value: 0.16 },

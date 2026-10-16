@@ -17,7 +17,7 @@ const TONE_CHROMA = {
   600: 0.98, 700: 0.86, 800: 0.7, 900: 0.55, 950: 0.42,
 };
 
-// Never sit on the gamut boundary; fully saturated sRGB reads as screen colour, not glass.
+// Never sit on the gamut boundary; fully saturated sRGB reads as screen color, not glass.
 const GAMUT_HEADROOM = 0.94;
 
 // `drift` rotates the hue of the dark tones so yellows deepen towards amber instead of olive.
@@ -49,7 +49,7 @@ export const FLAVORS = {
     name: 'Lauds',
     hour: 'Dawn',
     scheme: 'light',
-    blurb: 'First light on pale limestone. Ink on stone, colour pooling on the floor.',
+    blurb: 'First light on pale limestone. Ink on stone, color pooling on the floor.',
     accent: 'cobalt',
     roles: ROLE_TONES.light,
     stone: { hue: 85, chroma: 0.014 },
@@ -138,9 +138,9 @@ export function harmony(accent) {
 }
 
 export const GLAZINGS = {
-  'pot-metal': { name: 'Pot-metal', note: 'Glass coloured through its whole body. Solid, opaque accent.' },
-  flashed: { name: 'Flashed', note: 'A thin skin of colour over clear glass. Translucent, glowing accent.' },
-  grisaille: { name: 'Grisaille', note: 'Monochrome glass with a coloured border. Accent as a line only.' },
+  'pot-metal': { name: 'Pot-metal', note: 'Glass colored through its whole body. Solid, opaque accent.' },
+  flashed: { name: 'Flashed', note: 'A thin skin of color over clear glass. Translucent, glowing accent.' },
+  grisaille: { name: 'Grisaille', note: 'Monochrome glass with a colored border. Accent as a line only.' },
 };
 
 export const STATUS = { danger: 'ruby', warning: 'amber', success: 'verdure', info: 'azure' };

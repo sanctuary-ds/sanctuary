@@ -26,7 +26,7 @@ function pigmentFile(palette) {
   return { pigment };
 }
 
-// Terminal colours follow the convention that 0/8 recede and 7/15 carry text, in both schemes.
+// Terminal colors follow the convention that 0/8 recede and 7/15 carry text, in both schemes.
 function ansi(scheme) {
   const neutrals =
     scheme === 'dark'

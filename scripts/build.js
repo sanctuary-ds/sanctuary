@@ -47,7 +47,7 @@ function fontData(tokens) {
   );
 }
 
-/** The resolved palette as plain data, for tools that want colours without a token pipeline. */
+/** The resolved palette as plain data, for tools that want colors without a token pipeline. */
 function paletteData(palette, tokens) {
   const flavors = {};
   for (const [id, flavor] of Object.entries(palette.flavors)) {

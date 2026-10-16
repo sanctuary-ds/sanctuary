@@ -67,7 +67,7 @@ function luminance(hex) {
   return 0.2126 * r + 0.7152 * g + 0.0722 * b;
 }
 
-/** WCAG 2 contrast ratio between two hex colours. */
+/** WCAG 2 contrast ratio between two hex colors. */
 export function contrast(hexA, hexB) {
   const [light, dark] = [luminance(hexA), luminance(hexB)].sort((x, y) => y - x);
   return (light + 0.05) / (dark + 0.05);
@@ -75,7 +75,7 @@ export function contrast(hexA, hexB) {
 
 const round = (value, digits) => Number(value.toFixed(digits));
 
-/** A colour record with a rounded OKLCH triple and its sRGB hex. */
+/** A color record with a rounded OKLCH triple and its sRGB hex. */
 export function color(l, c, h) {
   const oklch = [round(l, 4), round(c, 4), round(((h % 360) + 360) % 360, 2)];
   return { oklch, hex: oklchToHex(oklch) };
